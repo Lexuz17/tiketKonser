@@ -1,0 +1,26 @@
+$primary: #9477E1;
+$secondary: #B59DF5;
+$success: #29C166;
+$danger: #D32C2C;
+$dark: #2F2141;
+$black: #141414;
+$gray: #495057;
+$gray-100: #F5F5F5;
+$gray-200: #DDE2E5;
+$gray-300: #ACB5BD;
+$gray-400: #495057;
+$font-family-oxygen: 'Oxygen', sans-serif;
+$font-family-lato: 'Lato', sans-serif;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// body {
+//     font-family: $font-family-oxygen;
+// }
+
+// .custom-element {
+//     font-family: $font-family-lato;
+// }
+
+// Convert sass to css
+// sass bootstrap.scss bootstrap.css

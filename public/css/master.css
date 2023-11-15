@@ -1,0 +1,25 @@
+/* Navbar */
+.nav1{
+    font-size: 14px;
+}
+
+.nav2 .form-control::placeholder {
+    color: #ACB5BD; /* Ganti dengan warna yang Anda inginkan */
+}
+
+.form-control.text-black {
+    color: black !important;
+}
+
+nav .hastag{
+    font-size: 12px;
+}
+
+/* Footer */
+.second-footer{
+    font-size: 13px;
+}
+
+.second-footer .titik{
+    font-size: 10px;
+}
