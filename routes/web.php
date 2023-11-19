@@ -16,6 +16,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/about', function () {
+    return view('about');
+
+});
+
+Route::get('/cart', function () {
+    return view('cart');
+
+});
+
+Route::get('/detail', function () {
+    return view('detail_konser');
+});
+
+Route::get('/history', function () {
+    return view('transaction_history');
+
+});
+
+Route::get('/transaction', function () {
+    return view('transaction');
+
+});
 // Route::get('/test', function () {
 //     return view('test');
 // });
