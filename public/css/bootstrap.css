@@ -6017,7 +6017,7 @@ textarea.form-control-lg {
   background: none;
   border: 0;
   opacity: 0.5;
-  transition: opacity 0.15s ease;
+  transition: all 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-control-prev,
@@ -8268,6 +8268,10 @@ textarea.form-control-lg {
   font-size: 1rem !important;
 }
 
+.fs-label {
+    font-size: 0.9rem !important;
+  }
+
 .fst-italic {
   font-style: italic !important;
 }
@@ -8301,7 +8305,7 @@ textarea.form-control-lg {
 }
 
 .fw-bolder {
-  font-weight: bolder !important;
+  font-weight: 800 !important;
 }
 
 .lh-1 {
@@ -8414,6 +8418,26 @@ textarea.form-control-lg {
 .text-black {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
+}
+
+.text-gray-1 {
+  --bs-text-opacity: 1;
+  color: var(--bs-gray-100) !important;
+}
+
+.text-gray-2 {
+  --bs-text-opacity: 1;
+  color: var(--bs-gray-200) !important;
+}
+
+.text-gray-3 {
+  --bs-text-opacity: 1;
+  color: var(--bs-gray-300) !important;
+}
+
+.text-gray-4 {
+  --bs-text-opacity: 1;
+  color: var(--bs-gray-400) !important;
 }
 
 .text-white {

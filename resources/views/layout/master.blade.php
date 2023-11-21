@@ -7,11 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     {{-- Custom Local Boostrap --}}
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="   {{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/master.css') }}">
     {{-- Jquery --}}
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+    {{-- swiper.css --}}
+    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
+    {{-- Bootstrap --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    {{-- Fontawesome --}}
+    <script src="https://kit.fontawesome.com/61b0df038c.js" crossorigin="anonymous"></script>
+    {{-- Master --}}
+    <script src="{{ asset('storage/js/master.js') }}"></script>
 </head>
 
 <body class="lato min-vh-100">
@@ -237,14 +246,6 @@
     </div>
 
 
-    {{-- Bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
-
-    {{-- Fontawesome --}}
-    <script src="https://kit.fontawesome.com/61b0df038c.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('storage/js/master.js') }}"></script>
 </body>
 
 </html>
