@@ -41,3 +41,28 @@ var swiperCompany = new Swiper(".company-section-list", {
     speed: 800,
     effect: "slide",
 });
+
+var swiperCategory = new Swiper(".category-list", {
+    slidesPerView: 8,
+    centeredSlides: false,
+    slidesPerGroupSkip: 0,
+    grabCursor: true,
+    keyboard: {
+        enabled: true,
+    },
+    breakpoints: {
+        769: {
+            slidesPerView: 8,
+            slidesPerGroup: 8,
+        },
+    },
+    navigation: {
+        nextEl: ".section-company .swiper-button-next",
+        prevEl: ".section-company .swiper-button-prev",
+    },
+    speed: 800,
+    effect: "slide",
+    mousewheel: {
+        enabled: true,
+    },
+});

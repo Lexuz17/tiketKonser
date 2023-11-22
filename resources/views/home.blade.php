@@ -478,12 +478,448 @@
                             @endfor
                         </div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                </div>
+                <div class="swiper-button-next shadow my-auto" id="nextButton" aria-disabled="false">
+                    <i class="fa-solid fa-angle-right fs-6 text-gray-4"></i>
+                </div>
+                <div class="swiper-button-prev shadow my-auto" id="prevButton" aria-disabled="true">
+                    <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
                 </div>
             </div>
         </div>
 
+        {{-- Category --}}
+        <div class="section-category col-md-12 pb-2">
+            <div class="section-container container shadow p-4 rounded-3">
+                <div class="section-wrapper">
+                    <div class="section-title">
+                        <div class="fs-4 fw-bold lato text-dark">
+                            Kategori Konser
+                        </div>
+                    </div>
+                    <div class="section-content swiper">
+                        <div class="category-list">
+                            <div class="swiper-wrapper">
+                                @for ($i = 1; $i <= 2; $i++)
+                                    <div class="category-item swiper-slide position-relative overflow-hidden rounded-2" style='background-color: rgb(220, 20, 140);'>
+                                        <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+                                        <div class="category-img end-0 bottom-0">
+                                            <img src="{{ asset('storage/image/home/cat1.jpg') }}" alt="" class="object-fit-cover">
+                                        </div>
+                                        <div class="category-label text-white fw-bold p-2">
+                                            K-Pop
+                                        </div>
+                                    </div>
+                                    <div class="category-item swiper-slide position-relative overflow-hidden rounded-2" style='background-color: rgb(233, 20, 41);'>
+                                        <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+                                        <div class="category-img end-0 bottom-0">
+                                            <img src="{{ asset('storage/image/home/cat3.jpg') }}" alt="" class="object-fit-cover">
+                                        </div>
+                                        <div class="category-label text-white fw-bold p-2">
+                                            Musik Indonesia
+                                        </div>
+                                    </div>
+                                    <div class="category-item swiper-slide position-relative overflow-hidden rounded-2" style='background-color: rgb(0, 100, 80);'>
+                                        <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+                                        <div class="category-img end-0 bottom-0">
+                                            <img src="{{ asset('storage/image/home/cat6.jpg') }}" alt="" class="object-fit-cover">
+                                        </div>
+                                        <div class="category-label text-white fw-bold p-2">
+                                            Indie
+                                        </div>
+                                    </div>
+                                    <div class="category-item swiper-slide position-relative overflow-hidden rounded-2" style='background-color: rgb(83, 122, 161);'>
+                                        <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+                                        <div class="category-img end-0 bottom-0">
+                                            <img src="{{ asset('storage/image/home/cat4.jpg') }}" alt="" class="object-fit-cover">
+                                        </div>
+                                        <div class="category-label text-white fw-bold p-2">
+                                            Metal
+                                        </div>
+                                    </div>
+                                    <div class="category-item swiper-slide position-relative overflow-hidden rounded-2" style='background-color: rgb(96, 129, 8);'>
+                                        <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+                                        <div class="category-img end-0 bottom-0">
+                                            <img src="{{ asset('storage/image/home/cat5.jpg') }}" alt="" class="object-fit-cover">
+                                        </div>
+                                        <div class="category-label text-white fw-bold p-2">
+                                            Jazz
+                                        </div>
+                                    </div>
+                                    <div class="category-item swiper-slide position-relative overflow-hidden rounded-2" style='background-color: rgb(30, 50, 100);'>
+                                        <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+                                        <div class="category-img end-0 bottom-0">
+                                            <img src="{{ asset('storage/image/home/cat2.jpg') }}" alt="" class="object-fit-cover">
+                                        </div>
+                                        <div class="category-label text-white fw-bold p-2">
+                                            Anime
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Populer disuatu daerah --}}
+        <div class="section-event col-md-12 pb-2">
+            <div class="section-wrapper">
+                <div class="section-title d-flex align-items-center justify-content-between">
+                    <div class="label-title d-flex flex-wrap column-gap-2 align-items-center fs-4 fw-bold text-dark">
+                        <div class="">
+                            Populer di
+                        </div>
+                        <div class="filter-dropdown">
+                            <div class="filter-dropdown-selected d-flex align-items-center justify-content-center position-relative text-primary">
+                                <div>
+                                    Jakarta
+                                </div>
+                                <i class="fa-solid fa-chevron-down ms-2 mt-1 fs-6"></i>
+                            </div>
+                            <div class="filter-dropdown-collapse">
+                                <div class="search-input-container">
+                                    <div class="input-group mb-2">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                      </div>
+                                </div>
+                                <div class="filter-list">
+                                    <div class="filter-item">
+                                        <a class="d-inline-flex text-decoration-none location">
+                                            <i class="fa-solid fa-location-dot location text-primary"></i>
+                                            <div class="location-name">
+                                                Jakarta
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="filter-item">
+                                        <a class="d-inline-flex text-decoration-none location">
+                                            <i class="fa-solid fa-location-dot location text-primary"></i>
+                                            <div class="location-name">
+                                                Bandung
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="filter-item">
+                                        <a class="d-inline-flex text-decoration-none location">
+                                            <i class="fa-solid fa-location-dot location text-primary"></i>
+                                            <div class="location-name active">
+                                                Kediri
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-content swiper mySwiper">
+                    <div class="slide-content">
+                        <div class="swiper-wrapper">
+                            {{-- Card 1 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event1.jpg') }}" alt="event1" class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title">STEVE AOKI'S CAKE PARTY</div>
+                                    <div class="description-date text-gray-3 py-1">10 Dec 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 971.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator1.png') }}" width="32px"
+                                                    height="32px" alt="PRESTIGE PROMOTIONS" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">PRESTIGE
+                                                PROMOTIONS
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Card 2 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event2.jpg') }}" alt="event1" class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title ">Didangdutin Fest</div>
+                                    <div class="description-date text-gray-3 py-1">17 Dec 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 249.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator2.png') }}" width="32px"
+                                                    height="32px" alt="PRESTIGE PROMOTIONS" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">Micproject</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Card 3 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event3.jpg') }}" alt="event1"
+                                        class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title text-truncate">KONSER KEMANUSIAAN UNTUK
+                                        GAZA
+                                    </div>
+                                    <div class="description-date text-gray-3 py-1">21 Nov - 13 Dec 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 100.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator3.png') }}" width="32px"
+                                                    height="32px" alt="M BLOC FOUNDATION" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">M BLOC FOUNDATION
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Card 4 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event4.jpg') }}" alt="event1"
+                                        class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title ">INQUISITIVE</div>
+                                    <div class="description-date text-gray-3 py-1">25 Nov - 26 Nov 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 550.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator4.png') }}" width="32px"
+                                                    height="32px" alt="PRESTIGE PROMOTIONS" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">Bengkel Space
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Card 5 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event1.jpg') }}" alt="event1"
+                                        class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title ">STEVE AOKI'S CAKE PARTY</div>
+                                    <div class="description-date text-gray-3 py-1">10 Dec 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 971.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator1.png') }}" width="32px"
+                                                    height="32px" alt="PRESTIGE PROMOTIONS" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">PRESTIGE
+                                                PROMOTIONS
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Card 6 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event2.jpg') }}" alt="event1"
+                                        class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title ">Didangdutin Fest</div>
+                                    <div class="description-date text-gray-3 py-1">17 Dec 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 249.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator2.png') }}" width="32px"
+                                                    height="32px" alt="PRESTIGE PROMOTIONS" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">Micproject</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Card 7 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event3.jpg') }}" alt="event1"
+                                        class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title text-truncate">KONSER KEMANUSIAAN UNTUK
+                                        GAZA
+                                    </div>
+                                    <div class="description-date text-gray-3 py-1">21 Nov - 13 Dec 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 100.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator3.png') }}" width="32px"
+                                                    height="32px" alt="M BLOC FOUNDATION" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">M BLOC FOUNDATION
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Card 8 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event4.jpg') }}" alt="event1"
+                                        class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title ">INQUISITIVE</div>
+                                    <div class="description-date text-gray-3 py-1">25 Nov - 26 Nov 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 550.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator4.png') }}" width="32px"
+                                                    height="32px" alt="PRESTIGE PROMOTIONS" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">Bengkel Space
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Card 9 --}}
+                            <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
+                                <div class="card-event-thumbnail">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <img src="{{ asset('storage\image\home\event4.jpg') }}" alt="event1"
+                                        class="w-100">
+                                </div>
+                                <div class="card-event-description p-3">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    </a>
+                                    <div class="description-title ">INQUISITIVE</div>
+                                    <div class="description-date text-gray-3 py-1">25 Nov - 26 Nov 2023</div>
+                                    <div class="description-price">
+                                        <span class="final-price fw-bold">Rp 550.000</span>
+                                    </div>
+                                </div>
+                                <div class="card-event-creator px-3 py-2">
+                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0"></a>
+
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="creator-avatar me-3 rounded-circle overflow-hidden">
+                                                <img src="{{ asset('storage/image/home/creator4.png') }}" width="32px"
+                                                    height="32px" alt="PRESTIGE PROMOTIONS" class="">
+                                            </div>
+                                            <div class="creator-name text-uppercase text-gray-4 fs-label">Bengkel Space
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next shadow my-auto" id="nextButton" aria-disabled="false">
+                    <i class="fa-solid fa-angle-right fs-6 text-gray-4"></i>
+                </div>
+                <div class="swiper-button-prev shadow my-auto" id="prevButton" aria-disabled="true">
+                    <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
+                </div>
+            </div>
+        </div>
 
     </div>
 
