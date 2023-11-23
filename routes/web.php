@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SendEmail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +19,13 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('send-email', [SendEmail::class, 'index']);
+
 Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', [AuthController::class, 'register']);
 
 Route::get('/about', function () {
     return view('about');
@@ -48,6 +50,3 @@ Route::get('/transaction', function () {
     return view('transaction');
 
 });
-// Route::get('/test', function () {
-//     return view('test');
-// });

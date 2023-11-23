@@ -80,74 +80,78 @@
                         </div>
                         <div class="auth-content container shadow mt-4 py-3 px-4 rounded-4" style="width: 65%">
                             <div class="auth-content-form personal-info">
-                                <div class="mb-3">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <label for="uploadInput" class="image-profile position-relative">
-                                            <img src="{{ asset('storage/image/global/prof-icon.svg') }}" alt="" class="w-100">
-                                            <div class="fs-6 position-absolute bottom-0 end-0">
-                                                <div class="d-flex justify-content-center align-items-center bg-upload bg-primary rounded-circle">
-                                                    <i class="fa-solid fa-arrow-up-from-bracket text-gray-1"></i>
+                                <form action="register" method="post">
+                                    @csrf
+                                    {{-- pfp --}}
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <label for="uploadInput" class="image-profile position-relative">
+                                                <img src="{{ asset('storage/image/global/prof-icon.svg') }}" alt="" class="w-100">
+                                                <div class="fs-6 position-absolute bottom-0 end-0">
+                                                    <div class="d-flex justify-content-center align-items-center bg-upload bg-primary rounded-circle">
+                                                        <i class="fa-solid fa-arrow-up-from-bracket text-gray-1"></i>
+                                                    </div>
                                                 </div>
+                                                <input type="file" id="uploadInput" style="display: none;" name="pfp">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{-- noTelp --}}
+                                    <div class="mb-3">
+                                        <label for="phoneInput" class="form-label text-gray-4">No Ponsel</label>
+                                        <em class="text-danger">*</em>
+                                        <input type="tel" name="noTelp" class="form-control" id="phoneInput" aria-describedby="phoneHelp">
+                                        <div id="phoneError" class="text-danger"></div>
+                                    </div>
+                                    {{-- firstName--}}
+                                    <div class="mb-3">
+                                        <label for="firstNameInput" class="form-label text-gray-4 mb-0">Nama Depan</label>
+                                        <em class="text-danger">*</em>
+                                        <div class="fs-label text-gray-3 mb-2">
+                                            Sesuai di KTP/Passpor/SIM
+                                        </div>
+                                        <input type="text" class="form-control" id="firstNameInput" name="firstName" aria-describedby="firstNameHelp">
+                                        <div id="firstNameError" class="text-danger"></div>
+                                    </div>
+                                    {{-- lastName --}}
+                                    <div class="mb-3">
+                                        <label for="lastNameInput" class="form-label text-gray-4">Nama Belakang</label>
+                                        <input type="text" class="form-control" id="lastNameInput" name="lastName" aria-describedby="lastNameHelp">
+                                    </div>
+                                    {{-- dob --}}
+                                    <div class="mb-3">
+                                        <label for="dobInput" class="form-label text-gray-4">Tanggal Lahir</label>
+                                        <em class="text-danger">*</em>
+                                        <input type="date" class="form-control" id="dobInput" name="dob">
+                                        <div id="dobError" class="text-danger"></div>
+                                    </div>
+                                    {{-- Gender --}}
+                                    <div class="mb-3">
+                                        <label class="form-label text-gray-4">Jenis Kelamin</label>
+                                        <em class="text-danger">*</em>
+                                        <div class="gender-list d-flex justify-content-between">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gender" id="maleRadio" value="male">
+                                                <label class="form-check-label" for="maleRadio">
+                                                    Laki-laki
+                                                </label>
                                             </div>
-                                            <input type="file" id="uploadInput" style="display: none;">
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="phoneInput" class="form-label text-gray-4">No Ponsel</label>
-                                    <em class="text-danger">*</em>
-                                    <input type="tel" class="form-control" id="phoneInput" aria-describedby="phoneHelp">
-                                    <div id="phoneError" class="text-danger"></div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="firstNameInput" class="form-label text-gray-4 mb-0">Nama Depan</label>
-                                    <em class="text-danger">*</em>
-                                    <div class="fs-label text-gray-3 mb-2">
-                                        Sesuai di KTP/Passpor/SIM
-                                    </div>
-                                    <input type="text" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp">
-                                    <div id="firstNameError" class="text-danger"></div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="lastNameInput" class="form-label text-gray-4">Nama Belakang</label>
-                                    <input type="text" class="form-control" id="lastNameInput" aria-describedby="lastNameHelp">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="dobInput" class="form-label text-gray-4">Tanggal Lahir</label>
-                                    <em class="text-danger">*</em>
-                                    <input type="date" class="form-control" id="dobInput">
-                                    <div id="dobError" class="text-danger"></div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label text-gray-4">Jenis Kelamin</label>
-                                    <em class="text-danger">*</em>
-                                    <div class="gender-list d-flex justify-content-between">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" id="maleRadio" value="male">
-                                            <label class="form-check-label" for="maleRadio">
-                                                Laki-laki
-                                            </label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gender" id="femaleRadio" value="female">
+                                                <label class="form-check-label" for="femaleRadio">
+                                                    Perempuan
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" id="femaleRadio" value="female">
-                                            <label class="form-check-label" for="femaleRadio">
-                                                Perempuan
-                                            </label>
+                                        <div id="genderError" class="text-danger"></div>
+                                    </div>
+                                    {{-- button --}}
+                                    <a href="/" onclick="validateForm()">
+                                        <div class="btn btn-primary w-100">
+                                            Simpan
                                         </div>
-                                    </div>
-                                    <div id="genderError" class="text-danger"></div>
-                                </div>
-
-                                <a href="/" onclick="validateForm()">
-                                    <div class="btn btn-primary w-100">
-                                        Simpan
-                                    </div>
-                                </a>
+                                    </a>
+                                </form>
                             </div>
                         </div>
                     </div>
