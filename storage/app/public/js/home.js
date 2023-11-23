@@ -56,13 +56,36 @@ var swiperCategory = new Swiper(".category-list", {
             slidesPerGroup: 8,
         },
     },
-    navigation: {
-        nextEl: ".section-company .swiper-button-next",
-        prevEl: ".section-company .swiper-button-prev",
-    },
     speed: 800,
     effect: "slide",
     mousewheel: {
         enabled: true,
     },
+});
+
+document.getElementById('dropdownToggle').addEventListener('click', function() {
+    var dropdownContent = document.getElementById('dropdownContent');
+    if (dropdownContent.style.display === 'none') {
+        dropdownContent.style.display = 'block';
+    } else {
+        dropdownContent.style.display = 'none';
+    }
+});
+
+// nanti kalau udah ada BE speertinya ini g perlu..
+var locationItems = document.querySelectorAll('.filter-item .location-name');
+locationItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+        // hapus .active
+        locationItems.forEach(function(item) {
+            item.classList.remove('active');
+        });
+        // Add .active di class yg di select
+        this.classList.add('active');
+        // Update text
+        var selectedLocation = this.textContent;
+        document.getElementById('dropdownToggle').querySelector('.show-location').textContent = selectedLocation;
+        // tutup dropdown
+        document.getElementById('dropdownContent').style.display = 'none';
+    });
 });

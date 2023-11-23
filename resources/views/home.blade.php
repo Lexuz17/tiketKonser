@@ -571,30 +571,30 @@
                         <div class="">
                             Populer di
                         </div>
-                        <div class="filter-dropdown">
-                            <div class="filter-dropdown-selected d-flex align-items-center justify-content-center position-relative text-primary">
-                                <div>
+                        <div class="filter-dropdown position-relative">
+                            <div class="filter-dropdown-selected d-flex align-items-center justify-content-center position-relative text-primary" id="dropdownToggle">
+                                <div class="show-location">
                                     Jakarta
-                                </div>
+                                </div class="show-location">
                                 <i class="fa-solid fa-chevron-down ms-2 mt-1 fs-6"></i>
                             </div>
-                            <div class="filter-dropdown-collapse">
-                                <div class="search-input-container">
+                            <div class="filter-dropdown-collapse shadow p-3 rounded-3 position-absolute z-2 bg-white" id="dropdownContent">
+                                <div class="search-input-container mb-3">
                                     <div class="input-group mb-2">
                                         <button class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-solid fa-magnifying-glass"></i></button>
                                         <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                       </div>
                                 </div>
                                 <div class="filter-list">
-                                    <div class="filter-item">
+                                    <div class="filter-item align-items-center">
                                         <a class="d-inline-flex text-decoration-none location">
                                             <i class="fa-solid fa-location-dot location text-primary"></i>
-                                            <div class="location-name">
+                                            <div class="location-name active">
                                                 Jakarta
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="filter-item">
+                                    <div class="filter-item align-items-center">
                                         <a class="d-inline-flex text-decoration-none location">
                                             <i class="fa-solid fa-location-dot location text-primary"></i>
                                             <div class="location-name">
@@ -602,10 +602,10 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="filter-item">
+                                    <div class="filter-item align-items-center">
                                         <a class="d-inline-flex text-decoration-none location">
                                             <i class="fa-solid fa-location-dot location text-primary"></i>
-                                            <div class="location-name active">
+                                            <div class="location-name">
                                                 Kediri
                                             </div>
                                         </a>
@@ -919,6 +919,16 @@
                     <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
                 </div>
             </div>
+        </div>
+
+        {{-- Jelajah ke lebih banyak konser --}}
+        <div class="section-additional col-md-12 mx-auto text-center pt-2">
+            <a href="#">
+                <button type="button" class="btn btn-outline-primary">
+                    Jelajah ke lebih banyak konser
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </a>
         </div>
 
     </div>
