@@ -23,3 +23,32 @@ nav .hastag{
 .second-footer .titik{
     font-size: 10px;
 }
+
+.nav2 .guest .btn-outline-primary{
+    border-color: white;
+    color: white;
+}
+
+.nav2 .guest .btn-outline-primary{
+    background-color: transparent;
+    color: white;
+}
+
+
+.nav2 .guest .btn-primary{
+    background-color: #9477E1;
+}
+
+.auth-member .auth-member-figure-label{
+    margin-top: -10px;
+}
+
+.register .image-profile{
+    width: 100px;
+    height: 100px;
+}
+
+.register .image-profile .bg-upload{
+    width: 34px;
+    height: 34px;
+}

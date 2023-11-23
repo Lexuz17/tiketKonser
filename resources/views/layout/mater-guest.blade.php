@@ -47,7 +47,7 @@
     </div>
     <nav class="bg-dark nav2 shadow">
         <div class="mx-5 d-flex flex-row pt-3">
-            <div class="row row-cols-2 w-75">
+            <div class="row row-cols-2 w-75 ">
                 <div class="col-2">
                     <a class="navbar-brand" href="#">
                         <img src="{{ asset('storage/image/global/logo-loket-white.png') }}" alt=""
@@ -75,21 +75,25 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center ms-auto">
-                <div class="my-1">
-                    <a class="nav-link text-white fw-semibold px-3" href="#">
+            <div class="d-flex justify-content-center ms-auto guest">
+                <div class="mt-2 px-2">
+                    <a class="nav-link text-white fw-semibold" href="#">
+                        <i class="fa-solid fa-calendar-plus"></i> Buat Event
+                    </a>
+                </div>
+                <div class="mt-2 px-2">
+                    <a class="nav-link text-white fw-semibold" href="#">
                         <i class="fa-solid fa-compass mx-1"></i> Jelajah
                     </a>
                 </div>
-                <div class="my-1">
-                    <a class="nav-link text-white fw-semibold px-3" href="#">
-                        <i class="fa-solid fa-ticket-simple mx-1"></i> Ticket Saya
+                <div class="px-2">
+                    <a href="/register">
+                        <button type="button" class="btn btn-outline-primary">Daftar</button>
                     </a>
                 </div>
-                <div class="my-0">
-                    <a class="ps-2" href="#">
-                        <img src="{{ asset('storage/image/global/prof-icon.svg') }}" alt="profile-icon" width="32px"
-                            class="rounded-circle border border-2 border-primary">
+                <div class="">
+                    <a href="/login">
+                        <button type="button" class="btn btn-primary">Masuk</button>
                     </a>
                 </div>
             </div>
