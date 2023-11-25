@@ -1,3 +1,20 @@
-.detail_tabel{
-    margin : 0px 120px;
+.fontxlarge{
+    font-size: 22px;
+}
+
+.fonttext{
+    font-size: 17px;
+}
+
+.fonttitle{
+    font-size: large;
+}
+
+.widthimage{
+    width: 40px;
+}
+
+.buttonsize{
+    width: 35px;
+    height: 35px;
 }
