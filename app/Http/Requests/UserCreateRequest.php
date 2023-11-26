@@ -25,7 +25,7 @@ class UserCreateRequest extends FormRequest
     {
         return [
             'email' => 'unique:users|required',
-            'password' => ['required', 'regex:/^(?=.*[A-Z])(?=.*[!@#$%^&*])/', 'min:8'],
+            'password' => ['required', 'regex:/^(?=.*[A-Z])(?=.*[!@#$%^&*\'"])/', 'min:8', 'max:20', 'confirmed'],
         ];
     }
 
@@ -37,6 +37,8 @@ class UserCreateRequest extends FormRequest
             'password.required' => 'Password wajib diisi',
             'password.regex' => 'Password harus mengandung setidaknya satu huruf besar dan satu simbol',
             'password.min' => 'Password harus memiliki panjang minimal 8 karakter',
+            'password.max' => 'Password tidak boleh lebih dari 20 karakter',
+            'password.confirmed' => 'Konfirmasi password tidak cocok',
         ];
     }
 }

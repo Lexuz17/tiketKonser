@@ -23,8 +23,8 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified']);
 
 // Register
-Route::get('/register', [AuthController::class, 'register']);
-Route::post('/register', [AuthController::class, 'registerProcess']);
+Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
+Route::post('/register', [AuthController::class, 'registerProcess'])->middleware('guest');
 
 Route::get('/email/verify', [VerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
@@ -39,18 +39,18 @@ Route::put('/user-update', [UserController::class, 'update']);
 // Test Send email
 Route::get('send-email', [SendEmail::class, 'index']);
 
-Route::get('/login', function () {
-    return view('login');
-}) -> name('login');
+// Login
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticating'])->middleware('guest');
+// Logout
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::get('/about', function () {
     return view('about');
-
 });
 
 Route::get('/cart', function () {
     return view('cart');
-
 });
 
 Route::get('/detail', function () {

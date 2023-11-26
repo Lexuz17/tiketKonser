@@ -1,4 +1,4 @@
-@extends('layout.mater-guest')
+@extends('layout.master')
 
 @section('title', 'home')
 
@@ -8,6 +8,7 @@
 
     <div class="home-wrapper row g-4">
 
+        {{-- Flass notif --}}
         <div class="position-relative d-flex mx-auto text-center justify-content-center">
             <div class="position-absolute w-auto z-3 opacity-100">
                 @if(Session::has('status'))
@@ -17,8 +18,6 @@
                 @endif
             </div>
         </div>
-
-        {{-- Flass notif --}}
 
         {{-- Banner Promosi --}}
         <div id="bannerCarousel" class="carousel slide col-md-12" data-bs-ride="carousel" data-bs-interval="4000">
@@ -931,6 +930,17 @@
                     <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
                 </div>
             </div>
+        </div>
+
+        {{-- Tombol Logout --}}
+        <div class="section-logout col-md-12 mx-auto text-center pt-2">
+            <form action="/logout" method="get">
+                @csrf
+                <button type="submit" class="btn btn-outline-danger">
+                    Logout
+                    <i class="fa-solid fa-sign-out"></i>
+                </button>
+            </form>
         </div>
 
         {{-- Jelajah ke lebih banyak konser --}}

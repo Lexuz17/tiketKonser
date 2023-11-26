@@ -55,13 +55,14 @@
                     </a>
                 </div>
                 <div class="col-md-9">
-                    <div class="input-group w-100">
-                        <input type="text" class="form-control bg-white bg-opacity-10 border-0 text-white-50"
-                            placeholder="Cari konser seru di sini" aria-label="Search" aria-describedby="button-addon2">
-                        <button class="btn btn-primary" type="button" id="button-addon2">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
+                    <form action="" method="get">
+                        <div class="input-group w-100">
+                            <input type="text" class="form-control bg-white bg-opacity-10 border-0 text-white-50" placeholder="Cari konser seru di sini" name="event">
+                            <button class="btn btn-primary" id="button-addon2">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-md-2">
                 </div>

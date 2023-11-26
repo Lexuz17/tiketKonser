@@ -15,8 +15,6 @@
     </script>
     {{-- Fontawesome --}}
     <script src="https://kit.fontawesome.com/61b0df038c.js" crossorigin="anonymous"></script>
-    {{-- login.js --}}
-    <script src="{{ asset('storage/js/register.js') }}"></script>
 </head>
 
 <body>
@@ -58,35 +56,37 @@
                             </div>
                         </div>
 
-                        {{-- <form action="register" method="post" onsubmit="return validateForm()"> --}}
                         <form action="register" method="post">
                             @csrf
                             <div class="auth-content container shadow mt-4 py-3 px-4 rounded-4" style="width: 60%">
+
+                                {{-- Email --}}
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label text-gray-4">Email</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1" name="email"
-                                        aria-describedby="emailHelp">
-                                    <div id="emailError" class="text-danger"></div>
+                                        aria-describedby="emailHelp" value="{{ old('email') }}">
+                                    <div id="emailError" class="text-danger">
+                                        @error('email')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
                                 </div>
 
+                                {{-- Password --}}
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label text-gray-4">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                        name="password">
-                                    <div id="passwordError" class="text-danger"></div>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                                    <div id="passwordError" class="text-danger">
+                                        @error('password')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
                                 </div>
 
+                                {{-- Confirm Password --}}
                                 <div class="mb-3">
-                                    {{-- Error msg validation --}}
-                                    @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
+                                    <label for="exampleInputPassword2" class="form-label text-gray-4">Konfirmasi Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword2" name="password_confirmation">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary w-100">

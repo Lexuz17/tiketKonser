@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserProfileRequest;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,13 +15,22 @@ class UserController extends Controller
     }
 
     // Insert to DB
-    public function store(Request $request){
+    public function store(UserProfileRequest $request){
         // Cara manual
+        $newNameImg = 'prof-icon.svg';
+
+        if($request->file('pfp')){
+            $extension = $request->file('pfp')->getClientOriginalExtension();
+            // $newNameImg = $request->firstName.'-'.now()->timestamp.'.'.$extension;
+            $newNameImg = $request->firstName.'.'.$extension;
+            $request->file('pfp')->storeAs('image/avatars', $newNameImg);
+        }
+
         $user = Auth::user();
         $post = new UserProfile(); //membuat model baru.
         $post->user_id = $user->id;
         $post-> nama_depan = $request-> firstName;
-        $post-> gambar = 'sss';
+        $post-> gambar = $newNameImg;
         $post->nama_belakang = $request-> lastName;
         $post->no_telp = $request->noTelp;
         $post->gender = $request->gender;

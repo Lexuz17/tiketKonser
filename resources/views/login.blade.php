@@ -56,18 +56,35 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="auth-content container shadow mt-4 py-3 px-4 rounded-4" style="width: 60%">
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label text-gray-4">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <div id="emailError" class="text-danger"></div>
-                            </div>
-                            <a href="/" onclick="validateEmail()">
-                                <div class="btn btn-primary w-100">
-                                    Masuk
+                        <form action="/login" method="post">
+                            @csrf
+                            <div class="auth-content container shadow mt-4 py-3 px-4 rounded-4" style="width: 60%">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label text-gray-4">Email</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+                                    <div id="emailError" class="text-danger"></div>
                                 </div>
-                            </a>
-                        </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label text-gray-4">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+                                    <div id="passwordError" class="text-danger"></div>
+                                </div>
+
+                                @if (session('status') == 'error')
+                                    <div class="mb-3">
+                                        <div class="alert alert-danger">
+                                            {{ session('message') }}
+                                        </div>
+                                    </div>
+                                @endif
+
+                                <button type="submit" class="btn btn-primary w-100">
+                                    Masuk
+                                </button>
+                            </div>
+
+                        </form>
                     </div>
 
                 </div>
