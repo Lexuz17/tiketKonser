@@ -32,10 +32,6 @@ class TestSendingEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('aaa@gmail.com', 'Loket.com'),
-            replyTo: [
-                new Address('taylor@example.com', 'Taylor Otwell'),
-            ],
             subject: 'Test Sending Email',
         );
     }

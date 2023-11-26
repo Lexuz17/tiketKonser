@@ -43,7 +43,7 @@
                 </div>
                 <div class="auth-member-content col-md-6 d-flex justify-content-center align-items-center mt-4">
                     {{-- Ini tahap 1 --}}
-                    <div class="container align-items-center d-none">
+                    <div class="container align-items-center">
                         <div class="auth-title-login text-center">
                             <div class="fs-4 fw-semibold">
                                 Buat akun Loket kamu
@@ -57,22 +57,31 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="auth-content container shadow mt-4 py-3 px-4 rounded-4" style="width: 60%">
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label text-gray-4">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <div id="emailError" class="text-danger"></div>
-                            </div>
-                            <a href="/" onclick="validateEmail()">
-                                <div class="btn btn-primary w-100">
-                                    Daftar
+                        {{-- <form action="register" method="post" onsubmit="return validateForm()"> --}}
+                        <form action="register" method="post">
+                            @csrf
+                            <div class="auth-content container shadow mt-4 py-3 px-4 rounded-4" style="width: 60%">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label text-gray-4">Email</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                                    <div id="emailError" class="text-danger"></div>
                                 </div>
-                            </a>
-                        </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label text-gray-4">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                                    <div id="passwordError" class="text-danger"></div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100">
+                                    Daftar
+                                </button>
+                            </div>
+                        </form>
                     </div>
 
                     {{-- ini tahap 2 --}}
-                    <div class="container align-items-center">
+                    <div class="container align-items-center d-none">
                         <div class="auth-title text-center">
                             <div class="fs-4 fw-semibold">
                                 Lengkapi Profilmu
@@ -85,7 +94,7 @@
                                     {{-- pfp --}}
                                     <div class="mb-3">
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <label for="uploadInput" class="image-profile position-relative">
+                                            <label for="uploadInput" class="image-profile position-relative profile-input">
                                                 <img src="{{ asset('storage/image/global/prof-icon.svg') }}" alt="" class="w-100">
                                                 <div class="fs-6 position-absolute bottom-0 end-0">
                                                     <div class="d-flex justify-content-center align-items-center bg-upload bg-primary rounded-circle">
