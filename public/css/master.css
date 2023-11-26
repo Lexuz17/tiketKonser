@@ -52,3 +52,7 @@ nav .hastag{
     width: 34px;
     height: 34px;
 }
+
+.auth-content .profile-input{
+    cursor: pointer;
+}

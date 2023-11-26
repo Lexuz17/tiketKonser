@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('concert_categories', function (Blueprint $table) {
-            // $table->id();
+            $table->id();
             // $table->timestamps();
             // Ini buat table many to many nya concert dan category concerts
         });
