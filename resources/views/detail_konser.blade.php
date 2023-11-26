@@ -5,6 +5,7 @@
 @section("content")
 
 <link rel="stylesheet" href="{{ asset('css/detail_konser.css') }}">
+<script src="https://kit.fontawesome.com/95b8fa2528.js" crossorigin="anonymous"></script>
 
 <div class="mx-5">
     <div class = "d-flex flex-row fs-6  ">
@@ -20,13 +21,22 @@
 
     <div class = "d-flex flex-row mb-5">
         <div class="w-75" >
-            <img src="{{ asset('storage/image/home/banner3.jpg') }}" alt="" class=" rounded-1 img-fluid">
+            <img src="{{ asset('storage/image/detail/banner3.jpg') }}" alt="" class=" rounded-3 img-fluid">
         </div>
         <div class = "d-flex flex-column ms-5 shadow p-3 bg-white rounded-4 align-self-start w-25">
             <p class="fs-5 fw-bold">STEVE AOKI'S CAKE PARTY</p>
-            <p class="fs-6">10 Dec 2023</p>
-            <p class="fs-6">17:00 - 23:00 WIB</p>
-            <p class="fs-6">Phantom, PIK 2, Banten</p>
+            <div class = "d-flex flex-row">
+                <i class="fa-solid fa-calendar-days" style="color: #9477e1;"></i>
+                <p class="fs-6 ms-2 ">10 Dec 2023</p>
+            </div>
+            <div class = "d-flex flex-row">
+                <i class="fa-solid fa-clock" style="color: #9477e1;"></i>
+                <p class="fs-6 ms-2 ">17:00 - 23:00 WIB</p>
+            </div>
+            <div class = "d-flex flex-row">
+                <i class="fa-solid fa-location-dot" style="color: #9477e1;"></i>
+                <p class="fs-6 ms-2">Phantom, PIK 2, Banten</p>
+            </div>
         </div>
     </div>
 
@@ -153,9 +163,12 @@
                     <p>
                         Sudah Termasuk Pajak dan Adm
                     </p>
-                    <p class ="text-primary">
+                    <div class = "d-flex flex-row ">
+                        <i class="fa-solid fa-clock" style="color: #9477e1;"></i>
+                        <p class ="text-primary ms-2">
                         Berakhir 07 November 2023 • 23:00 WIB
-                    </p>
+                        </p>
+                    </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between pt-3 ">
                     <p class="fw-bold fonttitle ">
@@ -174,9 +187,12 @@
                     <p>
                         Sudah Termasuk Pajak dan Adm
                     </p>
-                    <p class ="text-primary">
-                    Berakhir 22 November 2023 • 23:00 WIB
-                    </p>
+                    <div class = "d-flex flex-row ">
+                        <i class="fa-solid fa-clock" style="color: #9477e1;"></i>
+                        <p class ="text-primary ms-2">
+                            Berakhir 22 November 2023 • 23:00 WIB
+                        </p>
+                    </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between pt-3 ">
                     <p class="fw-bold fonttitle ">
@@ -195,9 +211,12 @@
                     <p>
                         Sudah Termasuk Pajak dan Adm
                     </p>
-                    <p class ="text-primary">
-                    Berakhir 09 December 2023 • 23:00 WIB
-                    </p>
+                    <div class = "d-flex flex-row ">
+                        <i class="fa-solid fa-clock" style="color: #9477e1;"></i>
+                        <p class ="text-primary ms-2">
+                            Berakhir 09 December 2023 • 23:00 WIB
+                        </p>
+                    </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between pt-3 ">
                     <p class="fw-bold fonttitle ">
@@ -225,17 +244,15 @@
             <div class="pt-3 fs-6 ">
                 Bagikan Event
             </div>
-            <div class="d-flex flex-row">
-                <div class="pe-2">
-                    <!-- <img src="{{ asset('storage/image/detail/facebook.png') }}" alt="" class="rounded-4 img-fluid widthimage" > -->
-                    facebook
+            <div class="d-flex flex-row mt-3">
+                <div class="pe-4">
+                    <i class="fa-brands fa-facebook iconsize" style="color: #9477e1;"></i>
                 </div>
-                <div class="pe-2">
-                    twitter
-                    <!-- <img src="{{ asset('storage/image/detail/twitter.jpg') }}" alt="" class="rounded-4 img-fluid widthimage" > -->
+                <div class="pe-4">
+                    <i class="fa-brands fa-x-twitter iconsize" style="color: #9477e1;"></i>
                 </div>
-                <div class="pe-2">
-                    Ig
+                <div class="pe-4">
+                    <i class="fa-brands fa-instagram iconsize" style="color: #9477e1;"></i>
                 </div>
             </div>
         </div>
