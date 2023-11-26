@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SendEmail;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,12 @@ Route::post('/register', [AuthController::class, 'registerProcess']);
 Route::get('/email/verify', [VerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
 Route::get('/email/verify/resend-verification', [VerificationController::class, 'send'])->middleware(['auth', 'throttle:6,1'])->name('verification.send'); //pengguna hanya diizinkan untuk mengakses route yang dilindungi oleh middleware throttle ini sebanyak 6 kali dalam waktu 1 menit.
+
+// Add profile after register.
+Route::get('/user-add', [UserController::class, 'create'])->name('addProfile');
+Route::post('/user-add', [UserController::class, 'store']); // menyimpan data user ke dlm db.
+Route::get('/user-edit', [UserController::class, 'edit']); // show Update Profile detail
+Route::put('/user-update', [UserController::class, 'update']);
 
 // Test Send email
 Route::get('send-email', [SendEmail::class, 'index']);

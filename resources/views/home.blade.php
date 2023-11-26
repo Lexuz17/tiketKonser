@@ -8,6 +8,18 @@
 
     <div class="home-wrapper row g-4">
 
+        <div class="position-relative d-flex mx-auto text-center justify-content-center">
+            <div class="position-absolute w-auto z-3 opacity-100">
+                @if(Session::has('status'))
+                    <div class="alert alert-success" role='alert'>
+                        {{ Session::get('message') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        {{-- Flass notif --}}
+
         {{-- Banner Promosi --}}
         <div id="bannerCarousel" class="carousel slide col-md-12" data-bs-ride="carousel" data-bs-interval="4000">
             <div class="carousel-indicators mb-0">

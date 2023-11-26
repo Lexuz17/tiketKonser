@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserCreateRequest;
 use App\Mail\TestSendingEmail;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -16,15 +17,10 @@ class AuthController extends Controller
         return view('register');
     }
 
-    public function registerProcess(Request $request){
+    public function registerProcess(UserCreateRequest $request){
         $user = User::create([
-            // 'name' => $request->firstName,
-            // 'no_telp' => $request->noTelp,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // 'nama_lenkap' => $request->lastName,
-            // 'gender' => $request->gender,
-            // 'dob' => $request->dob
         ]);
 
         event(new Registered($user));
@@ -35,7 +31,6 @@ class AuthController extends Controller
         // Mail::to($user->email)->send(new TestSendingEmail($user));
 
         // Redirect or perform other actions after registration
-
         return redirect('/email/verify');
     }
 }

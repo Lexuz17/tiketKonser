@@ -12,8 +12,8 @@ class VerificationController extends Controller
     }
 
     public function verify(Request $request){
-        $request->fulfill();
-        return redirect('/');
+        $request->user()->markEmailAsVerified();
+        return redirect()->route('addProfile');
     }
 
     public function send(Request $request){
