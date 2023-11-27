@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-})->middleware(['auth', 'verified']);
+});
 
 // Register
 Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
@@ -45,6 +45,17 @@ Route::post('/login', [AuthController::class, 'authenticating'])->middleware('gu
 // Logout
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
+
+Route::middleware('verify')->group(function () {
+    Route::get('/history', function () {
+        return view('transaction_history');
+    });
+
+    Route::get('/transaction', function () {
+        return view('transaction');
+    });
+});
+
 Route::get('/about', function () {
     return view('about');
 });
@@ -55,14 +66,4 @@ Route::get('/cart', function () {
 
 Route::get('/detail', function () {
     return view('detail_konser');
-});
-
-Route::get('/history', function () {
-    return view('transaction_history');
-
-});
-
-Route::get('/transaction', function () {
-    return view('transaction');
-
 });
