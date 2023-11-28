@@ -41,12 +41,9 @@
     </div>
 
     <div class = "d-flex flex-row ">
-        <div class=" w-75" >
-            <div>
-                <p class="text-decoration-none text-primary text-center fontxlarge fw-bold">DESKRIPSI</p>
-            </div>
-            <p class=" fonttitle fw-bold ">
-                Get ready to elevate your party experience to a whole new level at "Steve Aoki's Cake Party" – the ultimate celebration of music, sweets, and unforgettable moments, starring none other than the legendary DJ Steve Aoki!  
+        <div class="d-flex flex-column w-75" >
+            <p class="fs-6 fw-bold ">
+            Get ready to elevate your party experience to a whole new level at "Steve Aoki's Cake Party" – the ultimate celebration of music, sweets, and unforgettable moments, starring none other than the legendary DJ Steve Aoki!
             </p>
             <p>
                 <div class="fonttext">
@@ -86,11 +83,11 @@
             <p class="fonttext">
                 Be prepared for a visual spectacle with state-of-the-art lighting and mesmerizing visuals that will transport you to another dimension. It's a party that will leave you breathless and craving for more!
             </p>
-            <p class="fonttext">
-                Don't miss out on this epic night of music, celebration, and indulgence. "Steve Aoki's Cake Party" is set to be the event of the year, and tickets are flying off the shelves! Stay tuned for more surprises and updates as we count down to this spectacular night. Secure your spot and let's make memories together at the party of a lifetime! 
+            <p class="fs-6">
+            Don't miss out on this epic night of music, celebration, and indulgence. "Steve Aoki's Cake Party" is set to be the event of the year, and tickets are flying off the shelves! Stay tuned for more surprises and updates as we count down to this spectacular night. Secure your spot and let's make memories together at the party of a lifetime!
             </p>
-            <p class="fonttext">
-                For more information visit  www.phantomclub.id 
+            <p class="fs-6">
+            For more information visit  www.phantomclub.id
             </p>
             <div>
                 <p class="text-decoration-none text-primary text-center fontxlarge fw-bold">
@@ -108,7 +105,7 @@
                     Cara Penukaran E-Voucher
                 </div>
                 <div class="fonttext">
-                    - Tunjukkan e-tiket yang telah diterima melalui email dari loket.com kepada petugas di lapangan untuk scan QR Code. Sesuaikan tingkat kecerahan layar ponsel sebelum menunjukkan QR Code. 
+                    - Tunjukkan e-tiket yang telah diterima melalui email dari loket.com kepada petugas di lapangan untuk scan QR Code. Sesuaikan tingkat kecerahan layar ponsel sebelum menunjukkan QR Code.
                 </div>
                 <div class="fonttext">
                     - Setelah QR Code sukses terverifikasi, customer akan mendapatkan wristband yang dapat digunakan untuk memasuki venue.
@@ -239,7 +236,8 @@
                 <p class="fs-6 fontxlarge me-5 ">Harga Mulai Dari</p>
                 <p class="fs-6 fw-bold fontxlarge ">Rp 777.000</p>
                 </div>
-                <button type="button" class="btn btn-primary w-100">Beli Tiket</button>
+                <button type="button" class="btn btn-primary w-100 spaced-button">Beli Tiket</button>
+                <button type="button" class="btn btn-primary w-100 spaced-button">Keranjang</button>
             </div>
             <div class="pt-3 fs-6 ">
                 Bagikan Event

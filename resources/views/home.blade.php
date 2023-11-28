@@ -72,7 +72,7 @@
                             {{-- Card 1 --}}
                             <div class="card-event rounded-3 bg-white overflow-hidden swiper-slide shadow ">
                                 <div class="card-event-thumbnail">
-                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0">
+                                    <a href="" class="position-absolute w-100 h-100 top-0 start-0">
                                     </a>
                                     <img src="{{ asset('storage\image\home\event1.jpg') }}" alt="event1" class="w-100">
                                 </div>

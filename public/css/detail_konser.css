@@ -22,3 +22,7 @@
 .iconsize{
     font-size: 40px;
 }
+
+.spaced-button {
+    margin-bottom: 20px;
+}

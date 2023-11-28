@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +50,11 @@ Route::middleware('guest')->group(function(){
     // Register
     Route::get('/register', [AuthController::class, 'register']);
     Route::post('/register', [AuthController::class, 'registerProcess']);
-
 });
+
+Route::get('cart', [EventsController::class, 'cart'])->name('cart');
+
+Route::get('add-to-cart/{id}', [EventsController::class, 'addToCart'])->name('add_to_cart');
 
 // Yang sudah login
 Route::middleware('auth')->group(function() {
