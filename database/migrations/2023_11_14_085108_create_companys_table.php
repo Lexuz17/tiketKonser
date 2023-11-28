@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('companys', function (Blueprint $table) {
             $table->id();
-            // $table->timestamps();
-            $table->string('nama', 255);
-            $table->binary('logo');
+            $table->string('nama');
+            $table->string('logo');
             $table->year('since');
             $table->string('desc', 2000);
+            // $table->timestamps();
         });
     }
 

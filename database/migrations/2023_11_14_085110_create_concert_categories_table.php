@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('detail_carts', function (Blueprint $table) {
-            $table->id();
+        Schema::create('concert_categories', function (Blueprint $table) {
+            $table->foreignId('concert_id')->constrained('concerts');
+            $table->foreignId('category_concert_id')->constrained('category_concerts');
             // $table->timestamps();
-            // foreign key ke carts id
-            // Foreign key ke tikcet id
-            // Jadi ini buat table many to manynya.
+            // Ini buat table many to many nya concert dan category concerts
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_carts');
+        Schema::dropIfExists('concert_categories');
     }
 };

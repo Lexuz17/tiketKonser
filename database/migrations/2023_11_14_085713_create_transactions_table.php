@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             // $table->timestamps();
             // Ambil user id foreign key
+            $table->foreignId('user_id')->constrained('users');
             $table->date('tanggal');
             $table->string('nomor_ktp', 50);
             $table->string('metode_pembayaran', 50);

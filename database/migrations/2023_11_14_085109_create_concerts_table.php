@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('concerts', function (Blueprint $table) {
             $table->id();
+            // Foreign key companys id
+            $table->foreignId('company_id')->constrained('companys')->onDelete('restrict');
             $table->string('nama_konser', 255);
             $table->date('tanggal');
             $table->time('waktu', $precision = 0);
             $table->string('tempat', 100);
-            $table->binary('gambar');
-            // Foreign key companys id
-            // $table->timestamps();
+            $table->string('gambar');
         });
     }
 

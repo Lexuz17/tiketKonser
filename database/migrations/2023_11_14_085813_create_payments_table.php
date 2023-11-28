@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             // foreign key dari transaction id
+            $table->foreignId('transaction_id')->constrained('transactions');
             $table->string('metode_pembayaran', 50);
             $table->string('nomor_kartu', 25);
             $table->string('nama_bank', 50);

@@ -27,7 +27,7 @@ class UserProfileRequest extends FormRequest
             // 'pfp' => 'required',
             'firstName' => 'required|min:2',
             'lastName' => 'required|max:255',
-            'noTelp' => 'required|regex:/(62)[0-9]{9}/',
+            'noTelp' => 'required|regex:/(62)[0-9]{8,10}/',
             'gender' => 'required',
             'dob' => 'required|date|required',
         ];
@@ -42,7 +42,7 @@ class UserProfileRequest extends FormRequest
             'lastName.max' => 'Nama belakang tidak boleh lebih dari 255 karakter',
             'lastName.required' => 'Nama belakang wajib diisi',
             'noTelp.required' => 'Nomor telepon wajib diisi',
-            'noTelp.regex' => 'Nomor telepon harus dimulai dengan "62" dan memiliki total 11 digit angka.',
+            'noTelp.regex' => 'Nomor telepon harus dimulai dengan "62" dan memiliki total 10 hingga 12 digit angka.',
             'gender.required' => 'Jenis kelamin wajib dipilih',
             'dob.date' => 'Format tanggal lahir tidak valid',
             'dob.required' => 'Tanggal lahir wajib diisi',

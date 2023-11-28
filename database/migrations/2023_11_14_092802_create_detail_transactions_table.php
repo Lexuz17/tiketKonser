@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detail_transactions', function (Blueprint $table) {
-            $table->id();
-            // $table->timestamps();
+            $table->foreignId('transaction_id')->constrained('transactions');
+            $table->foreignId('ticket_id')->constrained('tickets');
+            $table->primary(['transaction_id', 'ticket_id']);
             // foreign key transid dan ticket id
-            // kemudian keduanya juga primary key
             $table->integer('jumlah_ticket');
             $table->integer('total_harga_detail');
         });

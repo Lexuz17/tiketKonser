@@ -1,14 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\SendEmail;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +20,19 @@ use App\Http\Controllers\EventsController;
 */
 
 // Beberapa kondisi
-// Sudah login dan belum verify -> auth, notVerified
+// Sudah login dan belum verify -> auth, notVerified v
 // Blm login -> guest v
 // Sudah login, verify, tapi belum memiliki profile detail. -> auth, verified, ensureNoProfile v
 // Sudah login, verify, memiliki profile detail. -> auth, verified, ensureProfile v
 
-// Index -> show all listing event.
-Route::get('/', [EventController::class, 'index']);
+// Index -> show all listing.
+// show -> show single concert / detailnya
+// store -> store new listing.
+// edit -> show form to edit listing.
+// update -> update listing.
+// creata -> show form to create new listing.
+
+Route::get('/', [ConcertController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
@@ -42,9 +46,9 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::get('cart', [EventsController::class, 'cart'])->name('cart');
+Route::get('cart', [ConcertController::class, 'cart'])->name('cart');
 
-Route::get('add-to-cart/{id}', [EventsController::class, 'addToCart'])->name('add_to_cart');
+// Route::get('add-to-cart/{id}', [EventsController::class, 'addToCart'])->name('add_to_cart');
 
 // Hanya yang belum login
 Route::middleware('guest')->group(function(){
