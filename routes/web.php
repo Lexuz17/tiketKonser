@@ -42,6 +42,10 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
+Route::get('cart', [EventsController::class, 'cart'])->name('cart');
+
+Route::get('add-to-cart/{id}', [EventsController::class, 'addToCart'])->name('add_to_cart');
+
 // Hanya yang belum login
 Route::middleware('guest')->group(function(){
     // Login
@@ -51,10 +55,6 @@ Route::middleware('guest')->group(function(){
     Route::get('/register', [AuthController::class, 'register']);
     Route::post('/register', [AuthController::class, 'registerProcess']);
 });
-
-Route::get('cart', [EventsController::class, 'cart'])->name('cart');
-
-Route::get('add-to-cart/{id}', [EventsController::class, 'addToCart'])->name('add_to_cart');
 
 // Yang sudah login
 Route::middleware('auth')->group(function() {
