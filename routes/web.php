@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,10 @@ Route::get('/about', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
+
+Route::get('cart', [EventsController::class, 'cart'])->name('cart');
+
+Route::get('add-to-cart/{id}', [EventsController::class, 'addToCart'])->name('add_to_cart');
 
 Route::get('/detail', function () {
     return view('detail_konser');
