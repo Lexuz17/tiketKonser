@@ -60,8 +60,11 @@
             </div>
             <div class="my-0">
                 <a class="ps-2" href="#">
-                    <img src="{{ asset('storage/image/global/prof-icon.svg') }}" alt="profile-icon" width="32px"
-                        class="rounded-circle border border-2 border-primary">
+                    @if(isset($userProfile))
+                        <img src="{{ asset('storage/image/avatars/' . $userProfile->gambar) }}" alt="profile-icon" class="rounded-circle border border-2 border-primary object-fit-cover" style="width: 32px; height: 32px;">
+                    @else
+                        <img src="{{ asset('storage/image/avatars/prof-icon.svg')}}" alt="profile-icon" class="rounded-circle border border-2 border-primary object-fit-cover" style="width: 32px; height: 32px;">
+                    @endif
                 </a>
             </div>
         </div>

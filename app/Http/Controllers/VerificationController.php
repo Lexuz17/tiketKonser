@@ -16,8 +16,12 @@ class VerificationController extends Controller
         return redirect()->route('addProfile');
     }
 
+    public function noticeResend(){
+        return view('auth.resend-email');
+    }
+
     public function send(Request $request){
         $request->user()->sendEmailVerificationNotification();
-        return "Verifikasi Email berhasil terkirim";
+        return view('auth.success-resend');
     }
 }

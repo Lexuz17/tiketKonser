@@ -14,6 +14,10 @@ class UserController extends Controller
         return view('register_profile');
     }
 
+    public function createNotice(){
+        return view('auth.complete-profile');
+    }
+
     // Insert to DB
     public function store(UserProfileRequest $request){
         // Cara manual
