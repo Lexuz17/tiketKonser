@@ -59,7 +59,8 @@
                 </a>
             </div>
 
-            <div class="my-1">
+            {{-- Cart Alex Theo --}}
+            {{-- <div class="my-1">
                 <div class="dropdown">
                     <a class="nav-link text-white fw-semibold px-3" href="#">
                         <i class="fa-solid fa-shopping-cart mx-1" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
@@ -89,11 +90,19 @@
                         @endif
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                {{-- <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a> --}}
+                                <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div> --}}
+            <div class="my-1">
+                <a class="nav-link text-white fw-semibold px-3 position-relative" href="#">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span class="badge badge-pill bg-primary fw-bold rounded-circle position-absolute top-0 start-75 translate-middle" style="font-size: 10px;">
+                        5
+                    </span>
+                </a>
             </div>
 
             <div class="my-0">
