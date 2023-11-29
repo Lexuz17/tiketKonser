@@ -236,6 +236,7 @@
     margin-right: 17.5px;
 }
 
+/* Section filter */
 .section-event .filter-dropdown{
     cursor: pointer;
 }
@@ -261,6 +262,8 @@
     top: 40px;
     width: max-content;
     display: none;
+    height: 300px;
+    overflow-y: scroll;
 }
 
 .section-event .filter-dropdown .filter-dropdown-collapse .filter-item:not(:last-child)::after{

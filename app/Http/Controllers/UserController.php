@@ -61,13 +61,22 @@ class UserController extends Controller
         return view('profile_edit', ['user_email' => $user->email, 'user_origin' => $user_origin]);
     }
 
-    public function update(Request $request){ //update to db
+    public function update(Request $request)
+    {
         $user = Auth::user();
         $userProfile = UserProfile::where('user_id', $user->id)->firstOrFail();
 
+        $newNameImg = 'prof-icon.svg';
+
+        if ($request->file('pfp')) {
+            $extension = $request->file('pfp')->getClientOriginalExtension();
+            $newNameImg = $request->firstName.'.'. $extension;
+            $request->file('pfp')->storeAs('image/avatars', $newNameImg);
+        }
+
         // Update atribut pada model UserProfile
         $userProfile->nama_depan = $request->firstName;
-        $userProfile->gambar = 'sss'; // Mungkin Anda ingin mengganti dengan logika update gambar
+        $userProfile->gambar = $newNameImg;
         $userProfile->nama_belakang = $request->lastName;
         $userProfile->no_telp = $request->noTelp;
         $userProfile->gender = $request->gender;
@@ -78,6 +87,7 @@ class UserController extends Controller
 
         return redirect('/');
     }
+
 
 
 }

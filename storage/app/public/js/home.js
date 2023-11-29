@@ -65,14 +65,14 @@ var swiperCategory = new Swiper(".category-list", {
 
 document.getElementById('dropdownToggle').addEventListener('click', function() {
     var dropdownContent = document.getElementById('dropdownContent');
-    if (dropdownContent.style.display === 'none') {
+    if (dropdownContent.style.display === 'none' || dropdownContent.style.display === '') {
         dropdownContent.style.display = 'block';
     } else {
         dropdownContent.style.display = 'none';
     }
 });
 
-// nanti kalau udah ada BE speertinya ini g perlu..
+// ini buat list selected location
 var locationItems = document.querySelectorAll('.filter-item .location-name');
 locationItems.forEach(function(item) {
     item.addEventListener('click', function() {
@@ -87,5 +87,58 @@ locationItems.forEach(function(item) {
         document.getElementById('dropdownToggle').querySelector('.show-location').textContent = selectedLocation;
         // tutup dropdown
         document.getElementById('dropdownContent').style.display = 'none';
+
+        // raw logic untuk menyaring card berdasarkan lokasi
+        filterCardsByLocation(selectedLocation);
     });
 });
+
+function filterCardsByLocation(selectedLocation) {
+    var cards = document.querySelectorAll('.card-event');
+    cards.forEach(function(card) {
+        var cardLocation = card.getAttribute('data-location').trim();
+        selectedLocation = selectedLocation.trim();
+
+        if (selectedLocation === 'Semua' || selectedLocation === cardLocation) {
+            card.style.display = 'block';
+        } else {
+            console.log(cardLocation + '=' + selectedLocation);
+            card.style.display = 'none';
+        }
+    });
+}
+
+document.getElementById('searchLocationInput').addEventListener('input', function() {
+    var searchValue = this.value.trim().toLowerCase();
+    var locationItems = document.querySelectorAll('.filter-item');
+
+    locationItems.forEach(function(item) {
+        var locationName = item.querySelector('.location-name').textContent.toLowerCase();
+
+        // Cek apakah nama lokasi mengandung nilai pencarian
+        if (locationName.includes(searchValue)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+
+// for search
+// document.getElementById('searchInput').addEventListener('input', function() {
+//     var searchValue = this.value.trim().toLowerCase();
+//     var cards = document.querySelectorAll('.card-event');
+
+//     cards.forEach(function(card) {
+//         var cardTitle = card.querySelector('.description-title').textContent.toLowerCase();
+//         var cardLocation = card.getAttribute('data-location').toLowerCase();
+
+//         // cek judul atau lokasi kartu mengandung nilai pencarian
+//         if (cardTitle.includes(searchValue) || cardLocation.includes(searchValue)) {
+//             card.style.display = 'block';
+//         } else {
+//             card.style.display = 'none';
+//         }
+//     });
+// });
+

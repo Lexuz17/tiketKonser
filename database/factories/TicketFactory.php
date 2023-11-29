@@ -23,7 +23,7 @@ class TicketFactory extends Factory
         $tanggalSelesai = $faker->dateTimeBetween($tanggalMulai, '+3 months');
         return [
             'kategori' => $faker->unique()->randomElement($kategori),
-            'harga' => $faker->numberBetween(800000, 5000000),
+            'harga' => round($faker->numberBetween(500000, 3000000), -3),
             'jumlah_tersedia' => $faker->numberBetween(1, 100),
             'tanggal_mulai_penjualan' => $tanggalMulai->format('Y-m-d'),
             'tanggal_selesai_penjualan' => $tanggalSelesai->format('Y-m-d'),

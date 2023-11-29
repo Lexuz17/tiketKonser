@@ -15,8 +15,8 @@
     </script>
     {{-- Fontawesome --}}
     <script src="https://kit.fontawesome.com/61b0df038c.js" crossorigin="anonymous"></script>
-    {{-- login.js --}}
-    <script src="{{ asset('storage/js/register.js') }}"></script>
+    {{-- editProfile.js --}}
+    <script src="{{ asset('storage/js/editProfile.js') }}"></script>
 </head>
 
 <body>
@@ -28,20 +28,20 @@
         </div>
         <div class="auth-content container shadow mt-4 py-3 px-4 rounded-4" style="width: 65%">
             <div class="auth-content-form personal-info">
-                <form action="/user-update" method="POST">
+                <form action="/user-update" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     {{-- pfp --}}
                     <div class="mb-3">
                         <div class="d-flex align-items-center justify-content-center">
                             <label for="uploadInput" class="image-profile position-relative profile-input">
-                                <img src="{{ asset('storage/image/global/prof-icon.svg') }}" alt="" class="w-100">
+                                <img id="previewImage" src="{{ asset('storage/image/avatars/' . $user_origin->gambar) }}" alt="" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
                                 <div class="fs-6 position-absolute bottom-0 end-0">
-                                    <div class="d-flex justify-content-center align-items-center bg-upload bg-primary rounded-circle">
+                                    <div class="d-flex justify-content-center align-items-center bg-upload bg-primary rounded-circle p-2">
                                         <i class="fa-solid fa-arrow-up-from-bracket text-gray-1"></i>
                                     </div>
                                 </div>
-                                <input type="file" id="uploadInput" style="display: none;" name="pfp">
+                                <input type="file" id="uploadInput" style="display: none;" name="pfp" onchange="previewImage()">
                             </label>
                         </div>
                     </div>
@@ -86,13 +86,13 @@
                         <em class="text-danger">*</em>
                         <div class="gender-list d-flex justify-content-between">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="maleRadio" value="male" {{ $user_origin->gender == 'male' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="gender" id="maleRadio" value="laki-laki" {{ $user_origin->gender == 'laki-laki' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="maleRadio">
                                     Laki-laki
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="femaleRadio" value="female" {{ $user_origin->gender == 'female' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="gender" id="femaleRadio" value="perempuan" {{ $user_origin->gender == 'perempuan' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="femaleRadio">
                                     Perempuan
                                 </label>
@@ -100,12 +100,6 @@
                         </div>
                         <div id="genderError" class="text-danger"></div>
                     </div>
-                    {{-- button --}}
-                    {{-- <a href="/" onclick="validateForm()">
-                        <div class="btn btn-primary w-100">
-                            Simpan
-                        </div>
-                    </a> --}}
                     <button type="submit" class="btn btn-primary w-100">
                         Simpan
                     </button>
@@ -113,6 +107,7 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ asset('storage/js/editProfile.js') }}"></script>
 </body>
-
 </html>

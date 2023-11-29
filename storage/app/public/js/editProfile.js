@@ -16,7 +16,7 @@ $(document).ready(function () {
 
             reader.onload = function (e) {
                 preview.src = e.target.result;
-            };
+            }
 
             reader.readAsDataURL(input.files[0]);
         }

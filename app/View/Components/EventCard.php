@@ -7,15 +7,17 @@ use Illuminate\View\Component;
 class EventCard extends Component
 {
     public $image;
+    public $location;
     public $title;
     public $date;
     public $price;
     public $creatorImage;
     public $creatorName;
 
-    public function __construct($image, $title, $date, $price, $creatorImage, $creatorName)
+    public function __construct($image, $location, $title, $date, $price, $creatorImage, $creatorName)
     {
         $this->image = $image;
+        $this->location = $location;
         $this->title = $title;
         $this->date = $date;
         $this->price = $price;
