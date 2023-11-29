@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             // concert id foreign key
             $table->foreignId('concert_id')->constrained('concerts');
-            $table->integer('harga');
             $table->string('kategori', 50);
+            $table->integer('harga');
             $table->integer('jumlah_tersedia');
             $table->date('tanggal_mulai_penjualan');
             $table->date('tanggal_selesai_penjualan');

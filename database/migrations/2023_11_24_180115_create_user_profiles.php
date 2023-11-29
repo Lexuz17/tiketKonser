@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_depan')->nullable();
             $table->string('gambar')->nullable();
             $table->string('nama_belakang')->nullable();
-            $table->string('no_telp', 15)->nullable();
+            $table->string('no_telp', 20)->nullable();
             $table->string('gender', 20)->nullable();
             $table->date('dob')->nullable();
             $table->timestamps();

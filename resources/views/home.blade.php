@@ -458,7 +458,7 @@
                             <div class="company-item me-4 swiper-slide">
                                 <a href="#" class="position-absolute w-100 h-100 top-0 start-0 z-1"></a>
                                 <div class="company-avatar">
-                                    <img src="{{ asset('storage/image/home/company-4.png') }}" alt="">
+                                    <img src="{{ asset('storage/image/home/company-4.jpg') }}" alt="">
                                 </div>
                                 <div class="company-name">Comika Entertainment</div>
                             </div>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -49,6 +50,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
+        $user->update(['remember_token' => Str::random(10)]);
         // Send registration confirmation email
         // Mail::to($user->email)->send(new TestSendingEmail($user));
 
