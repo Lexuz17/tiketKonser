@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cart;
 use App\Models\Company;
 use App\Models\Concert;
 use App\Models\DetailTransaction;
@@ -21,43 +22,65 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserCartSeeder::class,
-            UserProfileSeeder::class,
-            CategoryConcertSeeder::class,
-            // CompanyConcertTicketSeeder::class,
+            UserCartSeeder::class,                   // untuk mengisi data pengguna dan keranjang belanja
+            UserProfileSeeder::class,                // untuk mengisi data profil pengguna
+            CategoryConcertSeeder::class,            // untuk mengisi data kategori konser
+            TransactionSeeder::class,                // untuk membuat dan mengisi transaksi dan payment terkait
+            CompanyConcertSeeder::class,             // untuk mengisi data perusahaan dan konser
+            TicketSeeder::class,                     // untuk membuat tiket untuk konser dan mengaitkannya dengan transaksi
+            CategoryConcertAttachmentSeeder::class,  // untuk mengisi data yang menghubungkan kategori dan konser
+            TicketCartAttachmentSeeder::class        // untuk mengisi data yang menghubungkan tiket dan keranjang belanja
         ]);
 
-        // Company::factory(10)->has(
-        //     Concert::factory()->has(
-        //         Ticket::factory()->count(3)
-        //     )->count(2)
-        // )->create();
+        // Raw logic
+        // $transactions = Transaction::factory()->count(10)->create();
 
-        // Transaction::factory(5)->has(
-        //     Payment::factory()
-        // )->create();
+        // foreach ($transactions as $transaction) {
+        //     Payment::factory()->count(2)->create(['transaction_id' => $transaction->id]);
+        // }
 
-        // Membuat 10 perusahaan
-        $companies = Company::factory(10)->create();
+        // $companies = Company::factory(10)->create();
 
-        foreach ($companies as $company) {
-            $concerts = Concert::factory()->has(
-                Ticket::factory()->count(3)->state([
-                    'concert_id' => function () use ($company) {
-                        return $company->concerts->random()->id;
-                    },
-                ])
-            )->count(2)->create(['company_id' => $company->id]);
+        // $allConcerts = collect(); // Membuat koleksi untuk menyimpan semua konser
 
-            foreach ($concerts as $concert) {
-                $tickets = $concert->tickets;
+        // foreach ($companies as $company) {
+        //     $concerts = Concert::factory()->count(2)->create(['company_id' => $company->id]);
+        //     $allConcerts = $allConcerts->merge($concerts);
+        // }
 
-                // Simpan tiket-tiket ke dalam detail transaksi
-                $detailTransaction = DetailTransaction::factory()->create();
+        // $allTickets = collect();
+        // foreach ($allConcerts as $concert) {
+        //     $tickets = Ticket::factory()->count(3)->create(['concert_id' => $concert->id]);
+        //     $allTickets = $allTickets->merge($tickets);
+        // }
 
-                // Hubungkan tiket-tiket dengan detail transaksi
-                $detailTransaction->tickets()->attach($tickets->pluck('id')->toArray());
-            }
-        }
+        // foreach ($transactions as $transaction) {
+        //     $randomTickets = $allTickets->random(3);
+        //     foreach ($randomTickets as $ticket) {
+        //         // Buat detail transaksi
+        //         DetailTransaction::factory()->create([
+        //             'transaction_id' => $transaction->id,
+        //             'ticket_id' => $ticket->id,
+        //         ]);
+        //     }
+        // }
+
+        // $allConcerts->each(function ($concert) {
+        //     $randomCategoryCount = rand(1, 3);
+        //     $randomCategoryIds = range(1, 10);
+        //     shuffle($randomCategoryIds);
+        //     $randomCategoryIds = array_slice($randomCategoryIds, 0, $randomCategoryCount);
+
+        //     $concert->categories()->attach($randomCategoryIds);
+        // });
+
+        // $ticket10 = $allTickets->random(10);
+
+        // $ticket10->each(function ($ticket) {
+        //     $randomCartCount = rand(1, 2);
+        //     $randomCarts = Cart::inRandomOrder()->limit($randomCartCount)->get();
+
+        //     $ticket->carts()->attach($randomCarts);
+        // });
     }
 }

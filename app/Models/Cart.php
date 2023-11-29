@@ -17,6 +17,6 @@ class Cart extends Model
 
     public function tickets()
     {
-        return $this->belongsToMany(Ticket::class);
+        return $this->belongsToMany(Ticket::class, 'detail_carts');
     }
 }

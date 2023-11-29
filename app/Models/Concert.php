@@ -19,7 +19,7 @@ class Concert extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(CategoryConcert::class, 'concert_categories');
     }
 
     public function tickets()
