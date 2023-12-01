@@ -18,7 +18,7 @@
     </ul>
 </div>
 <nav class="bg-dark nav2 shadow">
-    <div class="mx-5 d-flex flex-row pt-3">
+    <div class="mx-5 d-flex flex-row pt-3  z-3">
         <div class="row row-cols-2 w-75">
             <div class="col-2">
                 <a class="navbar-brand" href="#">
@@ -68,15 +68,15 @@
                     <div class="dropdown-menu">
                         <div class="row total-header-section">
                             @php $total = 0 @endphp
-                            @foreach((array) session('cart') as $id => $details)
+                            @foreach ((array) session('cart') as $id => $details)
                                 @php $total += $details['price'] * $details['quantity'] @endphp
                             @endforeach
                             <div class="col-lg-12 col-sm-12 col-12 total-section text-right">
                                 <p>Total: <span class="text-info">$ {{ $total }}</span></p>
                             </div>
                         </div>
-                        @if(session('cart'))
-                            @foreach(session('cart') as $id => $details)
+                        @if (session('cart'))
+                            @foreach (session('cart') as $id => $details)
                                 <div class="row cart-detail">
                                     <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
                                         <img src="{{ asset('img') }}/{{ $details['photo'] }}" />
@@ -99,21 +99,108 @@
             <div class="my-1">
                 <a class="nav-link text-white fw-semibold px-3 position-relative" href="#">
                     <i class="fa-solid fa-shopping-cart"></i>
-                    <span class="badge badge-pill bg-primary fw-bold rounded-circle position-absolute top-0 start-75 translate-middle" style="font-size: 10px;">
+                    <span
+                        class="badge badge-pill bg-primary fw-bold rounded-circle position-absolute top-0 start-75 translate-middle"
+                        style="font-size: 10px;">
                         5
                     </span>
                 </a>
             </div>
 
-            <div class="my-0">
+            <div class="my-0 position-relative z-3" id="authProfile">
                 <a class="ps-2" href="#">
-                    @if(isset($userProfile))
-                        <img src="{{ asset('storage/image/avatars/' . $userProfile->gambar) }}" alt="profile-icon" class="rounded-circle border border-2 border-primary object-fit-cover" style="width: 32px; height: 32px;">
+                    @if (isset($userProfile))
+                        <img src="{{ asset('storage/image/avatars/' . $userProfile->gambar) }}" alt="profile-icon"
+                            class="rounded-circle border border-2 border-primary object-fit-cover"
+                            style="width: 32px; height: 32px;">
                     @else
-                        <img src="{{ asset('storage/image/avatars/prof-icon.svg')}}" alt="profile-icon" class="rounded-circle border border-2 border-primary object-fit-cover" style="width: 32px; height: 32px;">
+                        <img src="{{ asset('storage/image/avatars/prof-icon.svg') }}" alt="profile-icon"
+                            class="rounded-circle border border-2 border-primary object-fit-cover"
+                            style="width: 32px; height: 32px;">
                     @endif
                 </a>
+                <div class="navbar-auth-dropdown bg-white px-1 py-3 position-absolute end-0 mt-2 rounded-3 oxygen">
+                    <div class="navbar-auth-dropdown-menu">
+                        <div class="auth-menu-list list-unstyled">
+                            <a href="#" class="text-decoration-none text-gray-4">
+                                <li class="py-2 px-2 mx-2 auth-menu-item rounded-2">
+                                    Jelajah
+                                </li>
+                            </a>
+                            <a href="#" class="text-decoration-none text-gray-4 ticket-saya">
+                                <li class="py-2 px-2 mx-2 auth-menu-item rounded-2">
+                                    Tiket Saya
+                                </li>
+                            </a>
+                            <a href="#" class="text-decoration-none text-gray-4">
+                                <li class="py-2 px-2 mx-2 auth-menu-item rounded-2">
+                                    Informasi Dasar
+                                </li>
+                            </a>
+                        </div>
+                        <div class="divider"></div>
+                        <form action="/logout" method="get">
+                            @csrf
+                            <button type="submit" class="ms-3 mt-2 btn btn-outline-danger">
+                                <i class="fa-solid fa-sign-out"></i>
+                                Keluar
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </nav>
+<div id="search-drop-overlay" class="search-drop-overlay"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var authProfile = document.getElementById('authProfile');
+        var overlay = document.getElementById('search-drop-overlay');
+
+        if (authProfile) {
+            authProfile.addEventListener('mouseenter', function() {
+                showDropdown();
+                showOverlay();
+                disableScroll();
+            });
+
+            authProfile.addEventListener('mouseleave', function() {
+                hideDropdown();
+                hideOverlay();
+                enableScroll();
+            });
+        }
+
+        function showDropdown() {
+            var dropdown = document.querySelector('.navbar-auth-dropdown');
+            dropdown.style.display = 'block';
+        }
+
+        function hideDropdown() {
+            var dropdown = document.querySelector('.navbar-auth-dropdown');
+            dropdown.style.display = 'none';
+        }
+
+        function showOverlay() {
+            overlay.style.display = 'block';
+        }
+
+        function hideOverlay() {
+            overlay.style.display = 'none';
+        }
+
+        function disableScroll() {
+            var scrollY = window.scrollY;
+            document.body.style.overflow = 'hidden';
+            // Tetapkan posisi scroll agar tidak bergeser
+            window.scrollTo(0, scrollY);
+        }
+
+        function enableScroll() {
+            // Hapus properti overflow hidden untuk mengaktifkan scroll kembali
+            document.body.style.overflow = 'auto';
+        }
+    });
+</script>

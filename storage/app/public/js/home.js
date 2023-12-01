@@ -89,12 +89,12 @@ locationItems.forEach(function(item) {
         document.getElementById('dropdownContent').style.display = 'none';
 
         // raw logic untuk menyaring card berdasarkan lokasi
-        filterCardsByLocation(selectedLocation);
+        filterCardsByLocation(selectedLocation, 'popularEventsSwiper');
     });
 });
 
-function filterCardsByLocation(selectedLocation) {
-    var cards = document.querySelectorAll('.card-event');
+function filterCardsByLocation(selectedLocation, swiperId) {
+    var cards = document.querySelectorAll('#' + swiperId + ' .card-event');
     cards.forEach(function(card) {
         var cardLocation = card.getAttribute('data-location').trim();
         selectedLocation = selectedLocation.trim();

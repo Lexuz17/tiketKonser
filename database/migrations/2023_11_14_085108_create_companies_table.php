@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('logo');
             $table->year('since');
-            $table->string('desc', 5000);
+            $table->string('desc', 10000);
             // $table->timestamps();
         });
     }

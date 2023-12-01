@@ -18,8 +18,10 @@ return new class extends Migration
             // Foreign key companys id
             $table->foreignId('company_id')->constrained('companies')->onDelete('restrict');
             $table->string('nama_konser', 255);
+            $table->string('desc', 10000);
             $table->date('tanggal');
-            $table->time('waktu', $precision = 0);
+            $table->time('waktu_start', $precision = 0);
+            $table->time('waktu_end', $precision = 0);
             $table->string('tempat', 100);
             $table->string('gambar');
             $table->string('banner')->nullable();

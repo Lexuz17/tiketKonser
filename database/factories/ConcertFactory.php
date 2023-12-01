@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Concert;
+use Carbon\Carbon;
 use Faker\Factory as FakerFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -29,13 +31,26 @@ class ConcertFactory extends Factory
         $gambar = $faker->randomElement($image);
         $banner = isset($bannerMapping[$gambar]) ? $bannerMapping[$gambar] : null;
 
+        $waktuStart = Carbon::parse($faker->time());
+        $waktuEnd = $waktuStart->copy()->addHours(2);
+
         return [
-            'nama_konser' => $faker->sentence(2),
+            'nama_konser' => function () use ($faker) {
+                $value = $faker->unique()->sentence(2);
+                // Supaya gak ada nama yg sama pas di seeding.
+                while (Concert::where('nama_konser', $value)->exists()) {
+                    $value = $faker->unique()->sentence(2);
+                }
+
+                return $value;
+            },
             'tanggal' => $faker->dateTimeBetween('-2 year', '+1 year')->format('Y-m-d'),
-            'waktu' => $faker->time(),
+            'waktu_start' => $waktuStart->format('H:i'),
+            'waktu_end' => $waktuEnd->format('H:i'),
             'tempat' => $faker->randomElement(['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Semarang', 'Makassar']),
             'gambar' => $gambar,
             'banner' => $banner,
+            'desc' => implode("\n", $faker->paragraphs(20)),
         ];
     }
 }

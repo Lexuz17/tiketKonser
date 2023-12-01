@@ -54,11 +54,35 @@ class ConcertController extends Controller
         return view('home', compact('sortedUpcomingConcertsUnique', 'favoriteConcerts', 'companiesShow', 'categoriesShow', 'uniquePlaces', 'sortedUpcomingConcerts'));
     }
 
-    // public function index()
-    // {
-    //     $events = Event::all();
-    //     return view('events', compact('events'));
-    // }
+    public function show($name)
+    {
+        $name = str_replace('-', ' ', $name) . '.';
+
+        $selectedConcert = Concert::with(['company', 'tickets' => function ($query) {
+            $query->orderBy('harga', 'asc');
+        }])->where('nama_konser', $name)->firstOrFail();
+
+        $selectedConcert->tickets->each(function ($ticket) {
+            $cheapestTicketPrice = $ticket->harga;
+            $ticket->cheapestTicketPrice = $cheapestTicketPrice;
+        });
+
+        $selectedCompanyData = optional(Company::find($selectedConcert->company_id));
+
+        if (Auth::check()) {
+            // Pengguna sudah login dan verify
+            $user = Auth::user();
+
+            if ($user->email_verified_at !== null) {
+                $userProfile = UserProfile::where('user_id', $user->id)->first();
+
+                return view('detail_konser', compact('userProfile', 'selectedConcert', 'selectedCompanyData'));
+            }
+        }
+
+        return view('detail_konser', compact('selectedConcert', 'selectedCompanyData'));
+    }
+
 
     public function cart()
     {

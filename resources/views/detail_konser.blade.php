@@ -1,273 +1,238 @@
-@extends("layout.master")
+@extends('layout.master')
 
 @section('title', 'detail-konser')
 
-@section("content")
+@section('content')
 
-<link rel="stylesheet" href="{{ asset('css/detail_konser.css') }}">
-<script src="https://kit.fontawesome.com/95b8fa2528.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('css/detail_konser.css') }}">
+    <script src="{{ asset('storage/js/detail.js') }}"></script>
+    <script src="https://kit.fontawesome.com/95b8fa2528.js" crossorigin="anonymous"></script>
 
-<div class="mx-5">
-    <div class = "d-flex flex-row fs-6  ">
-        <a href="/" class="text-decoration-none text-primary"><pre>Home</pre></a>
-        <pre>  >  </pre>
-        <a href="/" class="text-decoration-none text-primary"><pre>Konser</pre></a>
-        <pre>  •  </pre>
-        <a href="/" class="text-decoration-none text-primary"><pre>Musik</pre></a>
-        <pre>  >  </pre>
-        <a href="/" class="text-decoration-none text-dark"><pre>STEVE AOKI'S CAKE PARTY</pre></a>
-    </div>
+    <div class="mx-5">
+        <div class="alert notif-lebihdarimax alert-danger w-25" role="alert"></div>
 
-
-    <div class = "d-flex flex-row mb-5">
-        <div class="w-75" >
-            <img src="{{ asset('storage/image/detail/banner3.jpg') }}" alt="" class=" rounded-3 img-fluid">
+        <div class = "d-flex flex-row fs-6  ">
+            <a href="/" class="text-decoration-none text-primary">
+                <pre>Home</pre>
+            </a>
+            <pre>  >  </pre>
+            <a href="/" class="text-decoration-none text-primary">
+                <pre>Konser</pre>
+            </a>
+            <pre>  •  </pre>
+            <a href="/" class="text-decoration-none text-primary">
+                <pre>Musik</pre>
+            </a>
+            <pre>  >  </pre>
+            <a href="/" class="text-decoration-none text-dark">
+                <pre>{{ $selectedConcert->nama_konser }}</pre>
+            </a>
         </div>
-        <div class = "d-flex flex-column ms-5 shadow p-3 bg-white rounded-4 align-self-start w-25">
-            <p class="fs-5 fw-bold">STEVE AOKI'S CAKE PARTY</p>
-            <div class = "d-flex flex-row">
-                <i class="fa-solid fa-calendar-days" style="color: #9477e1;"></i>
-                <p class="fs-6 ms-2 ">10 Dec 2023</p>
-            </div>
-            <div class = "d-flex flex-row">
-                <i class="fa-solid fa-clock" style="color: #9477e1;"></i>
-                <p class="fs-6 ms-2 ">17:00 - 23:00 WIB</p>
-            </div>
-            <div class = "d-flex flex-row">
-                <i class="fa-solid fa-location-dot" style="color: #9477e1;"></i>
-                <p class="fs-6 ms-2">Phantom, PIK 2, Banten</p>
-            </div>
-        </div>
-    </div>
 
-    <div class = "d-flex flex-row ">
-        <div class="d-flex flex-column w-75" >
-            <p class="fs-6 fw-bold ">
-            Get ready to elevate your party experience to a whole new level at "Steve Aoki's Cake Party" – the ultimate celebration of music, sweets, and unforgettable moments, starring none other than the legendary DJ Steve Aoki!
-            </p>
-            <p>
+        <div class = "d-flex flex-row mb-5">
+            <div class="width-left">
+                <img src="{{ asset('storage/image/home/Event/' . $selectedConcert->gambar) }}" alt=""
+                    class=" rounded-3 img-fluid w-100 mb-5">
                 <div class="fonttext">
-                    Mark Your Calendar: Sunday, December 10, 2023
+                    Mark Your Calendar: {{ date('d F Y', strtotime($selectedConcert->tanggal)) }}
                 </div>
                 <div class="fonttext">
-                    Location: PHANTOM - PIK 2
+                    Location: {{ $selectedConcert->tempat }}
                 </div>
-            </p>
-            <p class="fonttext">
-                Prepare for an unforgettable night as we transform PHANTOM - PIK 2 into a realm of Music enchantment! This is not just any event, it's a journey that will leave you craving for more.
-            </p>
-            <p class="fonttext">
-                Our Headliner, the iconic DJ Steve Aoki, renowned for his electrifying performances and infectious music that will have you dancing all night long (Top hits: Munecas, Pursuit of Happiness, Mic Drop, Boneless)
-            </p>
-            <p class="fonttext">
-                But that's not all! Joining the musical extravaganza are Indonesia's finest talents:
-            </p>
-            <p class="fonttext">
-                • Dewa 19 feat. Virzha - Will grace the stage with their timeless hits, creating an atmosphere of pure nostalgia and     musical bliss. (Top Hits: Separuh Nafas, Pupus, Kangen, Arjuna)
-            </p>
-            <p class="fonttext">
-                • Dipha Barus - Get ready to groove to his captivating tunes that will keep the dance floor alive and kicking. (Top Hits: All Good, No One Can Stop Us)
-            </p>
-            <p class="fonttext">
-                • Vernons x Roy - Our resident DJ at PHANTOM, will turn up the heat till the last sweat!
-            </p>
-            <p class="fonttext">
-                • Ungu Band - From 'Melayang' to 'Demi Waktu,' Ungu Band's hits have stood the test of time. Join the journey of a      band that has etched its name in Indonesian music history
-            </p>
-            <p class="fonttext">
-                • Icha Yang - She will be singing your favorite pop/chinese anthem and makes you eargasm to her angelic voice  .
-            </p>
-            <p class="fonttext">
-                The famous cake-throwing from the one and only Steve Aoki, who wants to be caked?!
-            </p>
-            <p class="fonttext">
-                Be prepared for a visual spectacle with state-of-the-art lighting and mesmerizing visuals that will transport you to another dimension. It's a party that will leave you breathless and craving for more!
-            </p>
-            <p class="fs-6">
-            Don't miss out on this epic night of music, celebration, and indulgence. "Steve Aoki's Cake Party" is set to be the event of the year, and tickets are flying off the shelves! Stay tuned for more surprises and updates as we count down to this spectacular night. Secure your spot and let's make memories together at the party of a lifetime!
-            </p>
-            <p class="fs-6">
-            For more information visit  www.phantomclub.id
-            </p>
-            <div>
-                <p class="text-decoration-none text-primary text-center fontxlarge fw-bold">
-                    Syarat & Ketentuan
-                </p>
-            </div>
-            <p class="fonttitle fw-bold">
-                Penukaran Tiket Lokasi & Waktu Penukaran 10 Desember 2023 di Phantom, PIK 2.
-            </p>
-            <p class="fonttitle fw-bold">
-                - Pukul 10.00 - Selesai .
-            </p>
-            <p>
-                <div class="fonttitle fw-bold">
-                    Cara Penukaran E-Voucher
-                </div>
-                <div class="fonttext">
-                    - Tunjukkan e-tiket yang telah diterima melalui email dari loket.com kepada petugas di lapangan untuk scan QR Code. Sesuaikan tingkat kecerahan layar ponsel sebelum menunjukkan QR Code.
-                </div>
-                <div class="fonttext">
-                    - Setelah QR Code sukses terverifikasi, customer akan mendapatkan wristband yang dapat digunakan untuk memasuki venue.
-                </div>
-                <div class="fonttext">
-                    - Customer disarankan mematuhi seluruh protokol kesehatan selama event berlangsung.
-                </div>
-            </p>
-            <p>
-                <div class="fonttitle fw-bold">
-                    Syarat & Ketentuan Umum
-                </div>
-                <div class="fonttext">
-                    - Harga sudah termasuk pajak & admin fee.
-                </div>
-                <div class="fonttext">
-                    - Tiket yang sudah dibeli tidak dapat dikembalikan.
-                </div>
-                <div class="fonttext">
-                    - Tiket yang sudah dibeli tidak dapat diganti jadwalnya
-                </div>
-                <div class="fonttext">
-                    - Pembeli wajib mengisi data diri pribadi saat memesan.
-                </div>
-                <div class="fonttext">
-                    - Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai sesuai dengan kebijakan dari promotor
-                </div>
-                <div class="fonttext">
-                    - Pengunjung wajib menjaga protokol kesehatan yang berlaku.
-                </div>
-                <div class="fonttext">
-                    - Dilarang membawa senjata tajam dan senjata api
-                </div>
-            </p>
-            </p>
-            <p>
-                <div div class="fonttitle fw-bold">
-                    E-tiket
-                </div>
-                <div class="fonttext">
-                    - E-tiket tidak dapat diuangkan.
-                </div>
-            </p>
-            <div>
-                <p class="text-decoration-none text-primary text-center fontxlarge fw-bold">TIKET</p>
-            </div>
-            <div class ="bg-light p-3 mb-5 rounded-4">
-                <div class="border-bottom border-secondary border-3">
-                    <p class="fonttitle">
-                       Entrance Fee - Presale 1
+                <div class="position-sticky top-0 w-100 bg-white pt-2 pb-1 z-1">
+                    <p class="text-decoration-none text-primary text-center fontxlarge fw-bold">
+                        Deskripsi
                     </p>
-                    <p>
-                        Sudah Termasuk Pajak dan Adm
+                </div>
+                <div class="my-2">
+                    {{ $selectedConcert->desc }}
+                </div>
+                <div class="position-sticky top-0 w-100 bg-white pt-2 pb-1 z-2">
+                    <p class="text-decoration-none text-primary text-center fontxlarge fw-bold">
+                        Syarat & Ketentuan
                     </p>
-                    <div class = "d-flex flex-row ">
-                        <i class="fa-solid fa-clock" style="color: #9477e1;"></i>
-                        <p class ="text-primary ms-2">
-                        Berakhir 07 November 2023 • 23:00 WIB
-                        </p>
+                </div>
+                <div class="my-2">
+                    <p class="fonttitle fw-bold">
+                        Penukaran Tiket Lokasi & Waktu Penukaran {{ date('d F Y', strtotime($selectedConcert->tanggal)) }}
+                        di {{ $selectedConcert->tempat }}.
+                    </p>
+
+                    <div class="fonttitle fw-bold">
+                        Cara Penukaran E-Voucher
+                    </div>
+                    <div class="fonttext mb-4">
+                        - Tunjukkan e-tiket yang telah diterima melalui email dari loket.com kepada petugas di lapangan
+                        untuk scan QR Code. Sesuaikan tingkat kecerahan layar ponsel sebelum menunjukkan QR Code.
+                        <br>
+                        - Setelah QR Code sukses terverifikasi, customer akan mendapatkan wristband yang dapat digunakan
+                        untuk memasuki venue.
+                        <br>
+                        - Customer disarankan mematuhi seluruh protokol kesehatan selama event berlangsung.
+                    </div>
+
+                    <div class="fonttitle fw-bold">
+                        Syarat & Ketentuan Umum
+                    </div>
+                    <div class="fonttext mb-4">
+                        - Harga sudah termasuk pajak & admin fee.
+                        <br>
+                        - Tiket yang sudah dibeli tidak dapat dikembalikan.
+                        <br>
+                        - Tiket yang sudah dibeli tidak dapat diganti jadwalnya
+                        <br>
+                        - Pembeli wajib mengisi data diri pribadi saat memesan.
+                        <br>
+                        - Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai sesuai dengan kebijakan dari promotor
+                        <br>
+                        - Pengunjung wajib menjaga protokol kesehatan yang berlaku.
+                        <br>
+                        - Dilarang membawa senjata tajam dan senjata api
+                    </div>
+
+                    <div class="fonttitle fw-bold">
+                        E-tiket
+                    </div>
+                    <div class="fonttext">
+                        - E-tiket tidak dapat diuangkan.
                     </div>
                 </div>
-                <div class="d-flex flex-row justify-content-between pt-3 ">
-                    <p class="fw-bold fonttitle ">
-                        Rp 777.000
-                    </p>
-                    <p class="fw-bold text-primary  fonttitle">
-                        SOLD OUT
-                    </p>
+
+                <div class="position-sticky top-0 w-100 bg-white pt-2 z-3">
+                    <p class="text-decoration-none text-primary text-center fontxlarge fw-bold">TIKET</p>
+                </div>
+                <div class="ticketList">
+                    @foreach ($selectedConcert->tickets as $ticket)
+                        @php
+                            $ticketStatus = $ticket->tanggal_selesai_penjualan < now() || $ticket->jumlah_tersedia === 0 ? 'ticket-details-disable' : 'ticket-details';
+                        @endphp
+                        <div class="{{ $ticketStatus }} py-3 px-4 mb-4 rounded-3 position-relative">
+                            <div class="ticket-info">
+                                <div class="title fonttitle">{{ $ticket->kategori }}</div>
+                                <div class="description my-2 text-gray-4">Sudah Termasuk Pajak dan Adm</div>
+                                <div class="date-time d-flex align-items-center mb-2">
+                                    <i class="fa-solid fa-clock" style="color: #9477e1; font-size: 14px;"></i>
+                                    <div class="text-primary ms-2">Berakhir
+                                        {{ date('d F Y', strtotime($ticket->tanggal_selesai_penjualan)) }} • 23:00 WIB
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ticket-price d-flex flex-row justify-content-between pt-3">
+                                <p class="fw-bold title">Rp {{ number_format($ticket->harga, 0, ',', '.') }}</p>
+                                <div class="buy-controller-container" id-ticket="{{ $ticket->id }}"
+                                    data-ticket="{{ json_encode($ticket) }}"></div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-            <div class ="bg-light p-3 mb-5 rounded-4">
-                <div class="border-bottom border-secondary border-3">
-                    <p class="fonttitle">
-                       Entrance Fee - Presale 2
-                    </p>
-                    <p>
-                        Sudah Termasuk Pajak dan Adm
-                    </p>
-                    <div class = "d-flex flex-row ">
-                        <i class="fa-solid fa-clock" style="color: #9477e1;"></i>
-                        <p class ="text-primary ms-2">
-                            Berakhir 22 November 2023 • 23:00 WIB
-                        </p>
+            <div class="width-right">
+                <div class="top-card-right ms-5 shadow p-4 bg-white rounded-4 d-flex flex-column">
+                    <div class="d-flex flex-column align-self-start">
+                        <div class="fs-5 fw-bold mb-3">{{ $selectedConcert->nama_konser }}</div>
+                        <div class="d-flex flex-row align-items-center mb-2 mt-3">
+                            <i class="fa-solid fa-calendar-days me-2" style="color: #9477e1;"></i>
+                            <div class="fs-6">{{ date('d F Y', strtotime($selectedConcert->tanggal)) }}</div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center mb-2">
+                            <i class="fa-solid fa-clock me-2" style="color: #9477e1; font-size:14px;"></i>
+                            <div class="fs-6">
+                                {{ \Carbon\Carbon::parse($selectedConcert->waktu_start)->format('H:i') }} -
+                                {{ \Carbon\Carbon::parse($selectedConcert->waktu_end)->format('H:i') }}
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                            <i class="fa-solid fa-location-dot me-2 pe-1" style="color: #9477e1;"></i>
+                            <div class="fs-6">{{ $selectedConcert->tempat }}</div>
+                        </div>
+                    </div>
+                    <div class="mt-auto companyShow">
+                        <div class="d-flex pt-2">
+                            <div class="image-section me-3 overflow-hidden"
+                                style="width: 48px; height: 48px; border-radius: 50%;">
+                                <img src="{{ $selectedCompanyData['logo'] }}" alt="" width="100%" height="100%"
+                                    style="object-fit: cover;">
+                            </div>
+                            <div class="content-section">
+                                <div class="text-gray-3 fs-label">
+                                    Diselenggarakan oleh
+                                </div>
+                                <a href="#" class="text-decoration-none text-gray-4 fw-semibold fs-6">
+                                    {{ Str::limit($selectedCompanyData['nama'], 15, '...') }}
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="d-flex flex-row justify-content-between pt-3 ">
-                    <p class="fw-bold fonttitle ">
-                        Rp 971.000
-                    </p>
-                    <p class="fw-bold text-primary  fonttitle">
-                        SALE ENDED
-                    </p>
-                </div>
-            </div>
-            <div class ="bg-light p-3 mb-5 rounded-4">
-                <div class="border-bottom border-secondary border-3">
-                    <p class="fonttitle">
-                       Entrance Fee - Presale 3
-                    </p>
-                    <p>
-                        Sudah Termasuk Pajak dan Adm
-                    </p>
-                    <div class = "d-flex flex-row ">
-                        <i class="fa-solid fa-clock" style="color: #9477e1;"></i>
-                        <p class ="text-primary ms-2">
-                            Berakhir 09 December 2023 • 23:00 WIB
-                        </p>
+                <div class="d-flex ms-5 flex-column align-self-start sticky-top mt-2 pt-4 z-0">
+                    <div class = "shadow p-3 bg-white rounded-4">
+                        {{-- <div class="d-flex border-bottom border-1 border-light-subtle">
+                            <i class="fa-solid fa-ticket-simple fs-4 mt-2 me-3 ms-1 text-secondary"
+                                style="transform: rotate(-15deg);"></i>
+                            <p class="fs-label">Kamu belum memilih tiket.
+                                Silakan pilih lebih dulu di tab menu TIKET.</p>
+                        </div>
+                        <div class="d-flex flex-row pt-4">
+                            <p class="fs-6 fontxlarge">Harga Mulai Dari</p>
+                            <p class="fs-6 fw-bold fontxlarge ms-auto">Rp
+                                {{ number_format($selectedConcert->tickets->pluck('cheapestTicketPrice')->first(), 0, ',', '.') }}
+                            </p>
+                        </div> --}}
+                        <div class="event-detail-cart-list">
+                            <div class="event-detail-cart-item">
+                                <i class="fa-solid fa-ticket-simple fs-4 mt-2 me-3 ms-1 text-secondary"
+                                    style="transform: rotate(-15deg);"></i>
+                                <div class="cart-item-name">Silver</div>
+                                <div class="cart-item-description d-flex justify-content-between">
+                                    <span class="biji">1 Tiket</span>
+                                    <span class="harga">Rp 100.000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-detail-cart-list">
+                            <div class="event-detail-cart-item">
+                                <i class="fa-solid fa-ticket-simple fs-4 mt-2 me-3 ms-1 text-secondary"
+                                    style="transform: rotate(-15deg);"></i>
+                                <div class="cart-item-name">Silver</div>
+                                <div class="cart-item-description d-flex justify-content-between">
+                                    <span class="biji">1 Tiket</span>
+                                    <span class="harga">Rp 100.000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-detail-cart-amount">
+                            <div class="event-detail-cart-amount-label">
+                                <label class="amount-label-qty">Total 1 tiket</label>
+                                <label class="fs-5 fw-semibold">Rp
+                                    <span class="fs-5 fw-semibold"> 100.000 </span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100 spaced-button mb-2">Beli Tiket</button>
+                        <button type="button" class="btn btn-primary w-100 spaced-button">Tambahkan Keranjang</button>
                     </div>
-                </div>
-                <div class="d-flex flex-row justify-content-between pt-3 ">
-                    <p class="fw-bold fonttitle ">
-                        Rp 1.294.000
-                    </p>
-                    <div>
-                        <button type="button" class="btn btn-outline-primary me-3 rounded-5  buttonsize">-</button>
-                        0
-                        <button type="button" class="btn btn-outline-primary ms-3 rounded-5 buttonsize">+</button>
+                    <div class="mt-4 fs-6 ">
+                        Bagikan Event
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex ms-5 flex-column align-self-start w-25 sticky-top">
-            <div class = " shadow p-3 bg-white rounded-4">
-                <div>
-                <p class="fs-6 border-bottom border-2 pb-3 border-secondary  ">Kamu belum memilih tiket. Silakan pilih lebih dulu di tab menu TIKET.</p>
-                </div>
-                <div class="d-flex flex-row pt-2 ">
-                <p class="fs-6 fontxlarge me-5 ">Harga Mulai Dari</p>
-                <p class="fs-6 fw-bold fontxlarge ">Rp 777.000</p>
-                </div>
-                <button type="button" class="btn btn-primary w-100 spaced-button">Beli Tiket</button>
-                <button type="button" class="btn btn-primary w-100 spaced-button">Keranjang</button>
-            </div>
-            <div class="pt-3 fs-6 ">
-                Bagikan Event
-            </div>
-            <div class="d-flex flex-row mt-3">
-                <div class="pe-4">
-                    <i class="fa-brands fa-facebook iconsize" style="color: #9477e1;"></i>
-                </div>
-                <div class="pe-4">
-                    <i class="fa-brands fa-x-twitter iconsize" style="color: #9477e1;"></i>
-                </div>
-                <div class="pe-4">
-                    <i class="fa-brands fa-instagram iconsize" style="color: #9477e1;"></i>
+                    <div class="d-flex flex-row mt-3 mb-5">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                            <div class="me-4 icon">
+                                <i class="fa-brands fa-facebook-f iconsize text-black"></i>
+                            </div>
+                        </a>
+                        <a href="https://twitter.com/x" target="_blank" rel="noopener noreferrer">
+                            <div class="me-4 icon">
+                                <i class="fa-brands fa-x-twitter iconsize text-black"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                            <div class="me-4 icon">
+                                <i class="fa-brands fa-instagram iconsize text-black"></i>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    {{-- Button Prev & Next --}}
-    <div class="controls">
-        <div class="prev">
-
-        </div>
-        <div class="next">
-
-        </div>
-    </div>
-</div>
-
-<!-- ref:
-https://www.loket.com/event/steve-aoki-s-cake-party-yoo -->
-
 @endsection

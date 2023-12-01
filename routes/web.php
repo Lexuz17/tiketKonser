@@ -38,10 +38,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/detail', function () {
-    return view('detail_konser');
-});
-
+Route ::get('/event/{name}', [ConcertController::class, 'show']);
 Route::get('/cart', function () {
     return view('cart');
 });

@@ -19,10 +19,10 @@ class TicketFactory extends Factory
     {
         $faker = FakerFactory::create();
         $kategori = ['VIP', 'VVIP', 'Regular', 'Gold', 'Silver', 'Bronze'];
-        $tanggalMulai = $faker->dateTimeBetween('now', '+1 month');
-        $tanggalSelesai = $faker->dateTimeBetween($tanggalMulai, '+3 months');
+        $tanggalSelesai = $faker->dateTimeBetween('2023-01-01', '2024-12-31');
+        $tanggalMulai = $faker->dateTimeBetween('2023-01-01', $tanggalSelesai);
         return [
-            'kategori' => $faker->unique()->randomElement($kategori),
+            'kategori' => $faker->randomElement($kategori),
             'harga' => round($faker->numberBetween(500000, 3000000), -3),
             'jumlah_tersedia' => $faker->numberBetween(1, 100),
             'tanggal_mulai_penjualan' => $tanggalMulai->format('Y-m-d'),

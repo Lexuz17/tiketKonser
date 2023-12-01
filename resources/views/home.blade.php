@@ -24,7 +24,7 @@
                 @foreach ($sortedUpcomingConcertsUnique as $concert)
                     @if ($concert->banner)
                         <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="{{ $i }}"
-                            class="{{ $i === 0 ? 'active' : '' }} rounded-circle"
+                            class="{{ $i === 0 ? 'active' : '' }} rounded-circle custom-z-index"
                             aria-label="Slide {{ $i + 1 }}"></button>
                         @php $i++; @endphp
                     @endif
@@ -231,7 +231,7 @@
                     </div>
                 </div>
 
-                <div class="section-content swiper mySwiper">
+                <div id="popularEventsSwiper" class="section-content swiper mySwiper">
                     <div class="slide-content">
                         <div class="swiper-wrapper">
                             @foreach ($sortedUpcomingConcerts as $concert)
@@ -252,17 +252,6 @@
                     <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
                 </div>
             </div>
-        </div>
-
-        {{-- Tombol Logout --}}
-        <div class="section-logout col-md-12 mx-auto text-center pt-2">
-            <form action="/logout" method="get">
-                @csrf
-                <button type="submit" class="btn btn-outline-danger">
-                    Logout
-                    <i class="fa-solid fa-sign-out"></i>
-                </button>
-            </form>
         </div>
 
         {{-- Jelajah ke lebih banyak konser --}}
