@@ -21,7 +21,7 @@
     <div class="mx-5 d-flex flex-row pt-3">
         <div class="row row-cols-2 w-75 ">
             <div class="col-2">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="{{ asset('storage/image/global/logo-loket-white.png') }}" alt="" width="130">
                 </a>
             </div>

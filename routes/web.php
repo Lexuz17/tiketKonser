@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\SendEmail;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -32,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 // update -> update listing.
 // creata -> show form to create new listing.
 
-Route::get('/', [ConcertController::class, 'index']);
+Route::get('/', [ConcertController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('about');
@@ -80,9 +81,8 @@ Route::middleware(['auth','verified', 'ensureProfile'])->group(function () {
     Route::get('/user-edit', [UserController::class, 'edit']); // show Update Profile detail
     Route::put('/user-update', [UserController::class, 'update']);
 
-    Route::get('/transaction', function () {
-        return view('transaction');
-    });
+    // transaction section
+    Route::post('/transaction-show', [TransactionController::class, 'show'])->name("showTransaction");
 });
 
 // Yang sudah login tapi belum verify
