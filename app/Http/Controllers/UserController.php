@@ -71,7 +71,7 @@ class UserController extends Controller
         if ($request->file('pfp')) {
             $extension = $request->file('pfp')->getClientOriginalExtension();
             $newNameImg = $request->firstName.'.'. $extension;
-            $request->file('pfp')->storeAs('image/avatars', $newNameImg);
+            $request->file('pfp')->storeAs('public/image/avatars', $newNameImg);
         }
 
         // Update atribut pada model UserProfile
