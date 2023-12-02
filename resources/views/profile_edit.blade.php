@@ -41,7 +41,7 @@
                                         <i class="fa-solid fa-arrow-up-from-bracket text-gray-1"></i>
                                     </div>
                                 </div>
-                                <input type="file" id="uploadInput" style="display: none;" name="pfp" onchange="previewImage()">
+                                <input type="file" id="uploadInput" style="display: none;" value="{{ $user_origin ->gambar }}" name="pfp" onchange="previewImage()">
                             </label>
                         </div>
                     </div>
