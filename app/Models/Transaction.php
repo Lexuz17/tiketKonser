@@ -23,6 +23,6 @@ class Transaction extends Model
     public function tickets()
     {
         return $this->belongsToMany(Ticket::class, 'detail_transactions', 'transaction_id', 'ticket_id')
-            ->withPivot('jumlah_ticket', 'total_harga_detail');
+            ->withPivot('jumlah_ticket', 'jumlah_harga_detail');
     }
 }

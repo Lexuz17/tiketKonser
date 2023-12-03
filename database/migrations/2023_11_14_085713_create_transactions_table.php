@@ -19,6 +19,8 @@ return new class extends Migration
             // Ambil user id foreign key
             $table->foreignId('user_id')->constrained('users');
             $table->date('tanggal');
+            $table->integer('total_ticket');
+            $table->integer('total_harga_detail');
             $table->string('nomor_ktp', 50);
             $table->string('metode_pembayaran', 50);
             $table->string('status_pembayaran', 50);

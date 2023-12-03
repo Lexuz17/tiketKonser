@@ -19,7 +19,7 @@ return new class extends Migration
             $table->primary(['transaction_id', 'ticket_id']);
             // foreign key transid dan ticket id
             $table->integer('jumlah_ticket');
-            $table->integer('total_harga_detail');
+            $table->integer('jumlah_harga_detail');
         });
     }
 

@@ -43,8 +43,14 @@ function updateTicketQuantity(ticketId, value, maxQty, ticketNama, ticketHarga, 
     let currentQty = parseInt(ticketQtyInput.value, 10);
     let newQty = currentQty + value;
 
+    // Check if the new quantity exceeds the maximum limit
     if (newQty > maxQty) {
         showLebihDariMaxNotification(maxQty);
+        return;
+    }
+
+    if (calculateTotalQuantity() + value > 5) {
+        showLebihDariMaxNotification(5);
         return;
     }
 
@@ -62,15 +68,15 @@ function updateTicketQuantity(ticketId, value, maxQty, ticketNama, ticketHarga, 
 
     newHarga = ticketHarga * newQty;
 
-    // Temukan tiket yang sesuai dalam array tickets
+    // Find the ticket in the tickets array
     const ticketIndex = tickets.findIndex(ticket => ticket.id === ticketId);
 
     if (ticketIndex !== -1) {
-        // Jika tiket sudah ada dalam array, perbarui jumlahnya
+        // If the ticket is already in the array, update its quantity
         tickets[ticketIndex].quantity = newQty;
         tickets[ticketIndex].harga = newHarga;
     } else {
-        // Jika tiket belum ada dalam array, tambahkan sebagai objek baru
+        // If the ticket is not in the array, add it as a new object
         tickets.push({ id: ticketId, quantity: newQty, nama: ticketNama, harga: ticketHarga });
     }
 
@@ -92,6 +98,7 @@ function calculateTotalQuantity() {
 
 function updateCartUI(tickets, cheapest) {
     const cartNowContainer = document.getElementById('cartNowContainer');
+    const inputTotalAmount = document.getElementById('total_amount');
 
     cartNowContainer.innerHTML = '';
 
@@ -117,13 +124,17 @@ function updateCartUI(tickets, cheapest) {
         });
 
         const totalAmount = validTickets.reduce((total, ticket) => total + ticket.harga, 0);
+        inputTotalAmount.value = totalAmount;
 
         const cartAmount = document.createElement('div');
         cartAmount.classList.add('event-detail-cart-amount');
 
+        const totalQuantityInput = document.getElementById('total_quantity');
+        totalQuantityInput.value = calculateTotalQuantity();
+
         cartAmount.innerHTML = `
             <div class="event-detail-cart-amount-label">
-                <label class="amount-label-qty">Total ${validTickets.length} tiket</label>
+                <label class="amount-label-qty">Total ${totalQuantityInput.value} tiket</label>
                 <label class="fs-5 fw-semibold">Rp
                     <span class="fs-5 fw-semibold">${number_format(totalAmount, 0, ',', '.')}</span>
                 </label>

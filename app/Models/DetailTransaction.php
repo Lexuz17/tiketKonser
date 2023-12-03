@@ -15,7 +15,7 @@ class DetailTransaction extends Model
         'transaction_id',
         'ticket_id',
         'jumlah_ticket',
-        'total_harga_detail',
+        'jumlah_harga_detail',
     ];
 
     public function transaction()
