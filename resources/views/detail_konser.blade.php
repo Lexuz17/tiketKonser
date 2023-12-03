@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <form action="{{ route('transactions.store') }}" method="post" onsubmit="return validateForm()">
+        <form action="{{ route('transactions.confirm') }}" method="post" onsubmit="return validateForm()">
             @csrf
             @foreach ($selectedConcert->tickets as $ticket)
                 <input type="hidden" name="selected_tickets[{{ $ticket->id }}]" value="0">

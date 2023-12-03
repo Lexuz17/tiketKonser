@@ -57,8 +57,9 @@ class UserController extends Controller
     public function edit(Request $request){ //Show
         $user = Auth::user();
         $user_origin = UserProfile::where('user_id', $user->id)->firstOrFail();
+        $userProfile = UserProfile::where('user_id', $user->id)->firstOrFail();
 
-        return view('profile_edit', ['user_email' => $user->email, 'user_origin' => $user_origin]);
+        return view('profile_edit', ['user_email' => $user->email, 'user_origin' => $user_origin, 'userProfile' => $userProfile]);
     }
 
     public function update(Request $request)

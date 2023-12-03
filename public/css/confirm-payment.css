@@ -1,0 +1,369 @@
+.invoice-container{
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    background-color: transparent;
+    margin: 24px auto 0;
+    padding: 0;
+    grid-gap: 40px;
+}
+
+.invoice-payment{
+    width: 436px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(30, 44, 106, 0.1);
+    grid-template-rows: 260px 1fr;
+    border-radius: 16px;
+    height: fit-content;
+    display: grid;
+    overflow: hidden;
+}
+
+.invoice-payment-timer{
+    padding-bottom: 44px;
+    padding-top: 0;
+    background-color: #9377e114;
+}
+
+.countdown{
+    height: 100%;
+}
+
+.countdown-wrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 39px;
+}
+
+.countdown-title{
+    font-size: 0.875rem;
+    color: #2F2141;
+    font-weight: 600;
+}
+
+.countdown-timer {
+    width: 202px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid white;
+    box-sizing: border-box;
+    border-radius: 12px;
+    display: flex;
+    margin-top: 16px;
+    padding: 4px 19px;
+}
+
+.countdown-timer-section {
+    width: 57px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-timer-section .section-time {
+    position: relative;
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 40px;
+    color: #9477E1;
+    display: flex;
+}
+
+.countdown-timer-section .section-label {
+    font-size: 0.75rem;
+    color: #494A4A;
+}
+
+.countdown-timer-section:not(:last-child)::after {
+    content: ":";
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 40px;
+    color: #9477E1;
+    display: inline-block;
+}
+
+.countdown-label{
+    margin-top: 16px;
+    font-size: 0.875rem;
+    color: #2F2141;
+    text-align: center;
+}
+
+.invoice-payment-description{
+    padding: 24px;
+    position: relative;
+}
+
+.invoice-payment-detail {
+    margin-top: -70px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: flex-end;
+    grid-gap: 10px;
+    padding: 16px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(30, 44, 106, 0.1);
+    border-radius: 8px;
+}
+
+.invoice-payment-detail .invoice-payment-item.payment-method {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #DDE2E5;
+    padding-bottom: 12px;
+}
+
+.invoice-payment-detail .invoice-payment-icon {
+    margin-right: 14px;
+}
+
+.invoice-payment-detail .invoice-payment-value.virtual-account {
+    cursor: pointer;
+    position: relative;
+}
+
+.invoice-payment-detail .invoice-payment-value.amount {
+    font-weight: 700;
+    color: #9477E1;
+}
+
+.invoice-payment-label{
+    font-size: 0.85rem;
+    color: #ACB5BD;
+}
+
+.invoice-summary {
+    height: fit-content;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(30, 44, 106, 0.1);
+    border-radius: 8px;
+    margin: unset;
+}
+
+.invoice-summary-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #DDE2E5;
+}
+
+.invoice-summary-header .invoice-code, .invoice-summary-header .invoice-expired-date {
+    color: #747e88;
+    font-size: 0.875rem;
+}
+
+.invoice-summary-header .invoice-code span, .invoice-summary-header .invoice-expired-date span {
+    color: #2F2141;
+    font-weight: 500;
+}
+
+.invoice-summary-content {
+    padding: 24px;
+}
+
+.event-detail{
+    display: grid   ;
+    grid-template-columns: 300px 1fr;
+    grid-gap: 16px;
+}
+
+.event-detail-banner{
+    position: relative;
+    margin-bottom: 0;
+}
+
+.event-detail-banner .event-banner-thumbnail{
+    width: 100%;
+    height: 142px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.event-detail-banner .event-banner-thumbnail img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.event-detail-banner:after {
+    content: "";
+    height: 100%;
+    display: block;
+    border-right: 1px solid #ACB5BD;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.event-detail-info .event-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-detail-info .event-description .event-header{
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #2F2141;
+    margin-bottom: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+
+.event-detail-info .event-description .event-info{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 5px;
+}
+
+.event-detail-info .event-description .event-info .event-date .event-detail-info .event-description .event-info .event-time .event-detail-info .event-description .event-info .event-venue{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 25px 1fr;
+    grid-gap: 12px;
+    justify-items: center;
+    font-size: 0.875rem;
+    color: #DDE2E5;
+}
+
+.event-detail-info .event-description .event-info .event-date .ai .event-detail-info .event-description .event-info .event-time .ai .event-detail-info .event-description .event-info .event-venue .ai{
+    font-size: 24px;
+}
+
+.event-detail-info .event-description .event-info .event-date label .event-detail-info .event-description .event-info .event-time label .event-detail-info .event-description .event-info .event-venue label{
+    width: 100%;
+    color: #2F2141;
+    font-size: 1rem;
+}
+
+.ticket-reserved {
+    border-top: 1px solid #DDE2E5;
+    margin-top: 24px;
+    padding-top: 24px;
+}
+
+.ticket-reserved .ticket-header {
+    position: relative;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #2F2141;
+    margin-bottom: 16px;
+    padding-left: 12px;
+}
+
+.ticket-reserved .ticket-header::before {
+    content: "";
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background-color: #9477E1;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.ticket-reserved .ticket-list {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-row-gap: 8px;
+}
+
+.ticket-reserved .ticket-list .ticket-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 12px;
+}
+
+.ticket-reserved .ticket-list .ticket-item-desc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-reserved .ticket-list .ticket-item-desc label {
+    align-items: center;
+    display: flex;
+    color: #2F2141;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: block;
+    white-space: nowrap;
+}
+
+.ticket-reserved .ticket-list .ticket-item-desc span {
+    color: #495057;
+}
+
+.ticket-booker {
+    margin-top: 16px;
+    background-color: rgba(209, 184, 255, 0.15);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 0.875rem;
+}
+
+.ticket-booker-name {
+    color: #2F2141;
+    margin-bottom: 4px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.ticket-booker-email, .ticket-booker-phone {
+    color: #495057;
+}
+
+.payment-guide {
+    border-top: 1px solid #DDE2E5;
+    margin-top: 24px;
+    padding-top: 24px;
+}
+
+.payment-guide-header {
+    position: relative;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #2F2141;
+    padding-left: 12px;
+}
+
+.payment-guide-header::before {
+    content: "";
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background-color: #9477E1;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.payment-guide-content {
+    margin-top: 16px;
+}
+
+.payment-guide-content .guide-list {
+    color: #495057;
+    margin: 0;
+}
+
+.payment-guide-content .guide-list li {
+    padding-left: 4px;
+}

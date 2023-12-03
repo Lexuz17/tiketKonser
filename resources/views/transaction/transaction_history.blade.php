@@ -1,6 +1,6 @@
-@extends('layout.master')
+@extends('layout.master-dashboard')
 
-@section('title', 'history')
+@section('title', 'Tiket Saya')
 
 @section('content')
 
