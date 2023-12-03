@@ -84,12 +84,13 @@
             </div>
         </div>
 
-        <form action="{{ route('showTransaction') }}" method="post" onsubmit="return validateForm()">
+        <form action="{{ route('transactions.store') }}" method="post" onsubmit="return validateForm()">
             @csrf
             @foreach ($selectedConcert->tickets as $ticket)
                 <input type="hidden" name="selected_tickets[{{ $ticket->id }}]" value="0">
             @endforeach
             <input type="hidden" id="total_quantity" value="0">
+            <input type="hidden" name="total-amount" id="total_amount" value="0">
             <div class="d-flex flex-row mb-5 form-section">
                 <div class="width-left">
                     <div class="position-sticky top-0 w-100 bg-white pt-2 pb-1 z-1" id="stickyContainer">

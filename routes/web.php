@@ -74,15 +74,23 @@ Route::middleware(['auth','verified','ensureNoProfile'])->group(function () {
 
 // Yang sudah login, verify dan memiliki profile detail.
 Route::middleware(['auth','verified', 'ensureProfile'])->group(function () {
-    Route::get('/history', function () {
-        return view('transaction_history');
-    });
-
     Route::get('/user-edit', [UserController::class, 'edit']); // show Update Profile detail
     Route::put('/user-update', [UserController::class, 'update']);
 
-    // transaction section
-    Route::post('/transaction-show', [TransactionController::class, 'show'])->name("showTransaction");
+    // transactions section
+    // transferData
+    Route::get('/get-event-data', [TransactionController::class, 'getEventData']);
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    // Menyimpan transaksi baru ke dalam database
+    Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+    // Menampilkan detail transaksi
+    Route::get('/transactions/show', [TransactionController::class, 'show'])->name('transactions.show');
+    // Menampilkan formulir untuk mengonfirmasi pembayaran
+    Route::get('/transactions/{id}/confirm-payment', [TransactionController::class, 'confirmPayment'])->name('transactions.confirm-payment');
+    // Menyimpan konfirmasi pembayaran ke dalam database
+    Route::post('/transactions/{id}/confirm-payment', [TransactionController::class, 'storePaymentConfirmation'])->name('transactions.store-payment-confirmation');
+
+    // Route::post('/transaction-show', [TransactionController::class, 'show'])->name("showTransaction");
 });
 
 // Yang sudah login tapi belum verify

@@ -28,7 +28,7 @@ class DetailTransactionFactory extends Factory
                 return Ticket::factory()->create()->id;
             },
             'jumlah_ticket' => $faker->numberBetween(1, 5),
-            'total_harga_detail' => $faker->numberBetween(500000, 250000000)
+            'jumlah_harga_detail' => round($faker->numberBetween(500000, 10000000), -3)
         ];
     }
 }

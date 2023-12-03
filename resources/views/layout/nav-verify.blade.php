@@ -54,7 +54,7 @@
                 </a>
             </div>
             <div class="my-1">
-                <a class="nav-link text-white fw-semibold px-3" href="#">
+                <a class="nav-link text-white fw-semibold px-3" href="{{ route('transactions.index') }}">
                     <i class="fa-solid fa-ticket-simple mx-1"></i> Ticket Saya
                 </a>
             </div>

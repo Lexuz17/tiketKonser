@@ -106,7 +106,7 @@
                             <div class="top-selling-item d-inline-flex me-4 align-items-center">
                                 <div class="top-selling-number text-gray-4 oxygen lh-1 me-2">{{ $loop->iteration }}</div>
                                 <div class="top-selling-thumbnail position-relative rounded-3 overflow-hidden">
-                                    <a href="{{ $concert->nama_konser }}"
+                                    <a href="/event/{{ rtrim(str_replace(' ', '-', $concert->nama_konser), '.') }}"
                                         class="position-absolute w-100 h-100 top-0 start-0">
                                     </a>
                                     <img src="{{ asset('storage/image/home/Event/' . $concert->gambar) }}"
