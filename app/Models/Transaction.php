@@ -10,6 +10,17 @@ class Transaction extends Model
     use HasFactory;
     public $timestamps = false;
 
+    protected $fillable = [
+        'tanggal',
+        'waktu',
+        'nama_lengkap',
+        'no_telp',
+        'email',
+        'nomor_ktp',
+        'metode_pembayaran',
+        'status_pembayaran',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

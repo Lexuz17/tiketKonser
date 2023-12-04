@@ -81,15 +81,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             `<div class="btn btn-primary">
                                                                 E-Voucher
                                                             </div>
-                                                            <div class="btn btn-outline-dark">
-                                                                Invoice
-                                                            </div>` : ''}
+                                                            <form id="paymentGuideForm" action="transactions/${item.transaction_id}/show" method="POST">
+                                                                <input type="hidden" name="_token" value="${document.querySelector('meta[name="csrf-token"]').getAttribute('content')}">
+                                                                <button type="submit" class="btn btn-outline-dark">Invoice</button>
+                                                            </form>` : ''}
                                                         ${item.status_pembayaran === 'Pending' ?
-                                                            `<a href="transactions/${item.transaction_id}/confirm-payment">
+                                                            `<form action="transactions/${item.transaction_id}/show" method="GET">
                                                                 <div class="btn btn-primary">
                                                                     Panduan Pembayaran
                                                                 </div>
-                                                            </a>` : ''}
+                                                            </form>` : ''}
                                                     </div>
                                                 </div>
                                             </div>

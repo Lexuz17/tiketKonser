@@ -6,6 +6,12 @@
 
     <link rel="stylesheet" href="{{ asset('css/transaction.css') }}">
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="tabs-nav">
         <div class="main-text tab tab-active fw-semibold ">
             Event Aktif

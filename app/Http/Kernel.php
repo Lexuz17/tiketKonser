@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'notVerified' => \App\Http\Middleware\EnsureEmailNotVerified::class,
         'ensureNoProfile' => \App\Http\Middleware\EnsureNoProfile::class,
         'ensureProfile' => \App\Http\Middleware\EnsureProfile::class,
+        'verifyInvoice' => \App\Http\Middleware\VerifyInvoiceRequest::class,
     ];
 }

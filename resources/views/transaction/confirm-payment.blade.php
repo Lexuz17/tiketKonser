@@ -7,7 +7,8 @@
 
     <div class="page-layout on-detail container">
         <div class="invoice-to-list d-inline-block">
-            <a href="{{ route("transactions.index") }}" class="router-link-active d-flex align-items-center text-decoration-none">
+            <a href="{{ route('transactions.index') }}"
+                class="router-link-active d-flex align-items-center text-decoration-none">
                 <i class="fa-solid fa-arrow-left me-3"></i>
                 Kembali
             </a>
@@ -20,7 +21,8 @@
                             <div class="countdown-title">
                                 Sisa Waktu Pembayaran
                             </div>
-                            <div class="countdown-timer" id="countdown-container" data-target-time="{{ $transaction->tanggal.'T'.$transaction->waktu }}">
+                            <div class="countdown-timer" id="countdown-container"
+                                data-target-time="{{ $transaction->tanggal . 'T' . $transaction->waktu }}">
                                 <div class="countdown-timer-section">
                                     <span id="hour" class="section-time"></span>
                                     <span class="section-label">jam</span>
@@ -84,10 +86,14 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-primary" id="sudahBayarBtn">
-                            Sudah Bayar
-                        </button>
-                    </div> <!---->
+                        <!-- resources/views/nama_view.blade.php -->
+
+                        <form id="confirmPaymentForm" action="{{ route('transactions.store-payment-confirmation', ['id' => $transaction->id]) }}"
+                            method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary w-100" id="sudahBayarBtn">Sudah Bayar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="invoice-summary">
@@ -104,13 +110,14 @@
                     <div class="event-detail">
                         <div class="event-detail-banner">
                             <div class="event-banner-thumbnail">
-                                <img src="{{ asset('storage/image/home/Event/'.$concert->gambar) }}" alt="{{ $concert->nama_konser }}">
+                                <img src="{{ asset('storage/image/home/Event/' . $concert->gambar) }}"
+                                    alt="{{ $concert->nama_konser }}">
                             </div>
                         </div>
                         <div class="event-detail-info">
                             <div class="event-description">
                                 <div class="event-header">
-                                    {{ $concert->nama_konser}}
+                                    {{ $concert->nama_konser }}
                                 </div>
                                 <div class="event-info">
                                     <div class="event-date">
@@ -119,7 +126,8 @@
                                     </div>
                                     <div class="event-time">
                                         <i class="text-gray-3 fa-regular fa-clock me-1 "></i>
-                                        <label> {{ $concert->waktu_start }} - {{ $concert->waktu_end }} </label>
+                                        <label>{{ \Carbon\Carbon::parse($concert->waktu_start)->format('H:i') }} -
+                                            {{ \Carbon\Carbon::parse($concert->waktu_end)->format('H:i') }}</label>
                                     </div>
                                     <div class="event-venue">
                                         <i class="text-gray-3 fa-solid fa-location-dot me-2"></i>

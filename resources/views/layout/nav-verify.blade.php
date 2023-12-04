@@ -128,12 +128,12 @@
                                     Jelajah
                                 </li>
                             </a>
-                            <a href="#" class="text-decoration-none text-gray-4 ticket-saya">
+                            <a href="{{ route('transactions.index') }}" class="text-decoration-none text-gray-4 ticket-saya">
                                 <li class="py-2 px-2 mx-2 auth-menu-item rounded-2">
                                     Tiket Saya
                                 </li>
                             </a>
-                            <a href="#" class="text-decoration-none text-gray-4">
+                            <a href="{{ route('editProfile') }}" class="text-decoration-none text-gray-4">
                                 <li class="py-2 px-2 mx-2 auth-menu-item rounded-2">
                                     Informasi Dasar
                                 </li>

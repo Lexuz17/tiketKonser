@@ -6,13 +6,15 @@ use App\Models\Concert;
 use App\Models\Transaction;
 use App\Models\UserProfile;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class TransactionController extends Controller
 {
 
-    // fuction buat pull data di fetch.
+    // fuction buat pull data di fetch. -> done
     public function getEventData(Request $request)
     {
         $userId = Auth::id();
@@ -23,7 +25,7 @@ class TransactionController extends Controller
 
         foreach ($transactions as $transaction) {
             $tanggalTransaksi = $transaction->tanggal;
-            $waktuTransaksi = Carbon::parse($transaction->waktu);
+            $waktuTransaksi =$transaction->waktu;
             $firstTicket = $transaction->tickets->first();
 
             if ($firstTicket) {
@@ -58,7 +60,7 @@ class TransactionController extends Controller
                         // Logic buat update status pembayarannya
                         if (
                             $transaction->status_pembayaran === 'Pending' &&
-                            ($tanggalTransaksi < $today->toDateString() || ($tanggalTransaksi == $today->toDateString() && $waktuTransaksi < $today->toTimeString()))
+                            ($tanggalTransaksi <= $today->toDateString() && $waktuTransaksi < $today->toTimeString())
                         ) {
                             $transaction->status_pembayaran = 'Failed';
                             $transaction->save();
@@ -91,13 +93,13 @@ class TransactionController extends Controller
         return response()->json(['data' => $data]);
     }
 
-
+    // Ini nanti buat view athe punya.
     public function confrimTransaction(Request $request)
     {
         dd($request->all());
     }
 
-    // Menampilkan data transkasi
+    // Menampilkan data transkasi -> done
     public function index()
     {
         $userId = Auth::id();
@@ -105,15 +107,32 @@ class TransactionController extends Controller
         return view('transaction.transaction_history', compact('userProfile'));
     }
 
-    // Menampilkan detail transaksinya.
-    public function show(Request $request)
+    // Menampilkan detail transaksinya. -> ini kek invoice gt
+    public function show($id)
     {
-        dd($request->all());
-        return view('transaction.index');
-        // return view('transactions.show', ['transaction' => $transaction]);
+        $userId = Auth::id();
+        $userProfile = UserProfile::where('user_id', $userId)->first();
+
+        try {
+            $transaction = Transaction::where('id', $id)
+                ->where('user_id', $userId)
+                ->first();
+
+            $firstTicket = $transaction->tickets->first();
+            $concert_id = $firstTicket->concert_id;
+            $concert = Concert::findOrFail($concert_id);
+
+            if ($transaction && $transaction->status_pembayaran === 'Success') {
+                return view('transaction.invoice', compact('userProfile', 'transaction', 'concert'));
+            } else {
+                return redirect()->route('transactions.index');
+            }
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('transactions.index');
+        }
     }
 
-    // Menampilkan formulir untuk mengonfirmasi pembayaran
+    // Menampilkan formulir untuk mengonfirmasi pembayaran -> done
     public function confirmPayment($id)
     {
         $userId = Auth::id();
@@ -133,13 +152,19 @@ class TransactionController extends Controller
         }
     }
 
-    // Menyimpan konfirmasi pembayaran ke dalam database
-    public function storePaymentConfirmation(Request $request, $id)
+    // Menyimpan konfirmasi pembayaran ke dalam database, Jadi dari yang halaman confirmPayment kl tombol dipencet itu kesini -> done
+    public function storePaymentConfirmation($id)
     {
-        // Logika untuk menyimpan konfirmasi pembayaran
-        // ...
+        $today = now()->setTimezone('Asia/Jakarta');
+        $transaction = Transaction::find($id);
 
-        return redirect()->route('transactions.show', $id)->with('success', 'Konfirmasi pembayaran berhasil!');
+        if (!$transaction) {
+            return redirect()->route('transactions.confirm-payment', $id)->with('error', 'Transaksi tidak ditemukan.');
+        }
+
+        $transaction->update(['status_pembayaran' => 'Success', 'tanggal' => $today->toDateString(), 'waktu' => $today->toTimeString()]);
+        Session::flash('success', 'Yay, Konfirmasi pembayaran berhasil!');
+        return redirect()->route('transactions.index');
     }
 
     // Menampilkan formulir pembuatan transaksi baru -> ini gak perlu
@@ -148,7 +173,7 @@ class TransactionController extends Controller
         return view('transactions.create');
     }
 
-    // Menyimpan transaksi baru ke dalam database
+    // Nanti buat Menyimpan transaksi baru ke dalam database
     public function store(Request $request)
     {
         dd($request->all());
@@ -170,6 +195,67 @@ class TransactionController extends Controller
     }
 
     public function debug(){
-        return view('layout.master-dashboard');
+        $userId = Auth::id();
+        $transactions = Transaction::where('user_id', $userId)->get();
+        $dataKonserLalu = [];
+        $dataKonserAktif = [];
+        $today = now()->setTimezone('Asia/Jakarta');
+
+        foreach ($transactions as $transaction) {
+            $tanggalTransaksi = $transaction->tanggal;
+            $waktuTransaksi = $transaction->waktu;
+            $firstTicket = $transaction->tickets->first();
+
+            if ($firstTicket) {
+                $ticketId = $firstTicket->id;
+
+                $concert = Concert::whereHas('tickets', function ($query) use ($ticketId) {
+                    $query->where('id', $ticketId);
+                })->first();
+
+                $tanggalKonser = $concert->tanggal;
+
+                if ($concert) {
+                    // Bandingkan dengan tanggal saat ini
+                    if ($tanggalKonser < $today) {
+                        // ini logic jadi kalau yg lalu g da yg pending, otomatis failed
+                        if (
+                            $transaction->status_pembayaran === 'Pending') {
+                            $transaction->status_pembayaran = 'Failed';
+                            $transaction->save();
+                        }
+                        // Konser sudah lalu
+                        $dataKonserLalu[] = [
+                            'transaction_id' => $transaction->id,
+                            'concert_name' => $concert->nama_konser,
+                            'concert_gambar' => $concert->gambar,
+                            'tanggal_konser' => $tanggalKonser,
+                            'total_tiket' => $transaction->total_ticket,
+                            'tanggal_transaction' => $transaction->tanggal,
+                            'status_pembayaran' => $transaction->status_pembayaran,
+                        ];
+                    } else {
+                        // Logic buat update status pembayarannya
+                        if (
+                            $transaction->status_pembayaran === 'Pending' &&
+                            ($tanggalTransaksi <= $today->toDateString() && $waktuTransaksi < $today->toTimeString())
+                        ) {
+                            $transaction->status_pembayaran = 'Failed';
+                            $transaction->save();
+                        }
+                        // Konser masih aktif
+                        $dataKonserAktif[] = [
+                            'transaction_id' => $transaction->id,
+                            'concert_name' => $concert->nama_konser,
+                            'concert_gambar' => $concert->gambar,
+                            'tanggal_konser' => $tanggalKonser,
+                            'total_tiket' => $transaction->total_ticket,
+                            'tanggal_transaction' => $transaction->tanggal,
+                            'status_pembayaran' => $transaction->status_pembayaran,
+                        ];
+                    }
+                }
+            }
+        }
     }
 }

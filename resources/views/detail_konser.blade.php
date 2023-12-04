@@ -187,7 +187,6 @@
                                 {{-- Ini di JS. --}}
                             </div>
                             <button type="submit" class="btn btn-primary w-100 spaced-button mb-2">Beli Tiket</button>
-                            <button type="button" class="btn btn-primary w-100 spaced-button">Tambahkan Keranjang</button>
                         </div>
                         <div class="mt-4 fs-6 ">
                             Bagikan Event

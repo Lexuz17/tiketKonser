@@ -100,6 +100,15 @@
             </form>
         </div>
     </div>
+    <div class="d-flex align-items-center justify-content-center mx-auto">
+        <form action="/logout" method="get">
+            @csrf
+            <button type="submit" class="ms-3 mt-2 btn btn-outline-danger w-100">
+                <i class="fa-solid fa-sign-out"></i>
+                Keluar
+            </button>
+        </form>
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{ asset('storage/js/editProfile.js') }}"></script>
 @endsection

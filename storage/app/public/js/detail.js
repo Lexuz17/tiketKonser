@@ -83,7 +83,6 @@ function updateTicketQuantity(ticketId, value, maxQty, ticketNama, ticketHarga, 
     updateCartUI(tickets, cheapest);
 }
 
-
 function calculateTotalQuantity() {
     // Fungsi ini menghitung dan mengembalikan total kuantitas tiket yang dipilih.
     const ticketQtyInputs = document.querySelectorAll('.ticket-controller-label');

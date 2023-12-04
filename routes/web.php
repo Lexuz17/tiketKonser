@@ -86,7 +86,8 @@ Route::middleware(['auth','verified', 'ensureProfile'])->group(function () {
     // Menyimpan transaksi baru ke dalam database
     Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
     // Menampilkan detail transaksi
-    Route::get('/transactions/show', [TransactionController::class, 'show'])->name('transactions.show');
+    Route::get('/transactions/{id}/show', [TransactionController::class, 'show'])->middleware('verifyInvoice');
+    Route::post('/transactions/{id}/show', [TransactionController::class, 'show'])->name('transactions.show')->middleware('verifyInvoice');
     // Menampilkan formulir untuk mengonfirmasi pembayaran
     Route::get('/transactions/{id}/confirm-payment', [TransactionController::class, 'confirmPayment'])->name('transactions.confirm-payment');
     // Menyimpan konfirmasi pembayaran ke dalam database
