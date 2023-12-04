@@ -91,6 +91,9 @@ Route::middleware(['auth','verified', 'ensureProfile'])->group(function () {
     Route::post('/transactions/{id}/confirm-payment', [TransactionController::class, 'storePaymentConfirmation'])->name('transactions.store-payment-confirmation');
 
     // Route::post('/transaction-show', [TransactionController::class, 'show'])->name("showTransaction");
+    Route::get('/transaction', function () {
+        return view('transaction.transaction');
+    });
 });
 
 // Yang sudah login tapi belum verify
