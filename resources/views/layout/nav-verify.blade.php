@@ -96,7 +96,8 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="my-1">
+            {{-- Button cart batal --}}
+            {{-- <div class="my-1">
                 <a class="nav-link text-white fw-semibold px-3 position-relative" href="#">
                     <i class="fa-solid fa-shopping-cart"></i>
                     <span
@@ -105,7 +106,7 @@
                         5
                     </span>
                 </a>
-            </div>
+            </div> --}}
 
             <div class="my-0 position-relative z-3" id="authProfile">
                 <a class="ps-2" href="#">

@@ -78,12 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 <div class="additional-cta mt-3">
                                                     <div class="invoice-links d-flex gap-3">
                                                         ${item.status_pembayaran === 'Success' ?
-                                `<div class="btn btn-primary">
+                                                            `<div class="btn btn-primary">
                                                                 E-Voucher
+                                                            </div>
+                                                            <div class="btn btn-outline-dark">
+                                                                Invoice
                                                             </div>` : ''}
-                                                        <div class="btn btn-outline-dark">
-                                                            Invoice
-                                                        </div>
+                                                        ${item.status_pembayaran === 'Pending' ?
+                                                            `<a href="transactions/${item.transaction_id}/confirm-payment">
+                                                                <div class="btn btn-primary">
+                                                                    Panduan Pembayaran
+                                                                </div>
+                                                            </a>` : ''}
                                                     </div>
                                                 </div>
                                             </div>
