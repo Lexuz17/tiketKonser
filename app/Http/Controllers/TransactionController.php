@@ -96,7 +96,9 @@ class TransactionController extends Controller
     // Ini nanti buat view athe punya.
     public function confrimTransaction(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+
+        return view('transaction.transaction');
     }
 
     // Menampilkan data transkasi -> done

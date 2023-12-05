@@ -249,6 +249,10 @@
                 grid-template-rows: 1fr;
                 grid-row-gap: 24px;
             }
+
+            .how-to{
+                display:none;
+            }
         </style>
     </head>
 
@@ -650,26 +654,30 @@
                             <form class="payment-method-list uk-width-1-1 uk-margin" id="list-payment-id">
                                 <label class="image-radio" style="order:-2;" data-payment-id="67">
                                     <input type="hidden" id="fee-67" value="0">
-                                    <input type="radio" id="lsa-payment-67" name="payment-method" value="67">
+                                    <input type="radio" id="lsa-payment-67" name="payment-method" onclick="hideShowDiv(1)" value="67">
                                     <span class="uk-position-relative payment-container">
                                         <div class="payment-promo-badge coupon"></div>
                                         <span class="payment-checked-info"></span>
-                                        <img src="\storage\app\public\image\home\PaymentMethod\method1.jpg"
+                                        <img src="storage/image/home/PaymentMethod/method1.jpg"
                                             class="uk-position-center gopay">
                                     </span>
                                     <input type="hidden" class="payment-name" name="67" value="Gopay">
-                                </label> <label class="image-radio" style="order:-1;" data-payment-id="34">
+                                </label>
+
+                                <label class="image-radio" style="order:-1;" data-payment-id="34">
                                     <input type="hidden" id="fee-34" value="5000">
-                                    <input type="radio" id="lsa-payment-34" name="payment-method" value="34">
+                                    <input type="radio" id="lsa-payment-34" name="payment-method" onclick="hideShowDiv(2)" value="34">
                                     <span class="uk-position-relative payment-container">
                                         <div class="payment-promo-badge coupon"></div>
                                         <span class="payment-checked-info"></span>
                                         <img src="/images/bank/bca.png" class="uk-position-center bca">
                                     </span>
                                     <input type="hidden" class="payment-name" name="34" value="BCA">
-                                </label> <label class="image-radio" data-payment-id="18">
+                                </label>
+
+                                <label class="image-radio" data-payment-id="18">
                                     <input type="hidden" id="fee-18" value="5000">
-                                    <input type="radio" id="lsa-payment-18" name="payment-method" value="18">
+                                    <input type="radio" id="lsa-payment-18" name="payment-method" onclick="hideShowDiv(3)" value="18">
                                     <span class="uk-position-relative payment-container">
                                         <div class="payment-promo-badge coupon"></div>
                                         <span class="payment-checked-info"></span>
@@ -677,37 +685,45 @@
                                             class="uk-position-center bank transfer">
                                     </span>
                                     <input type="hidden" class="payment-name" name="18" value="Bank Transfer">
-                                </label> <label class="image-radio" data-payment-id="82">
+                                </label>
+
+                                <label class="image-radio" data-payment-id="82">
                                     <input type="hidden" id="fee-82" value="3000">
-                                    <input type="radio" id="lsa-payment-82" name="payment-method" value="82">
+                                    <input type="radio" id="lsa-payment-82" name="payment-method" onclick="hideShowDiv(4)" value="82">
                                     <span class="uk-position-relative payment-container">
                                         <div class="payment-promo-badge coupon"></div>
                                         <span class="payment-checked-info"></span>
                                         <img src="/images/bank/logo-linkaja.png" class="uk-position-center linkaja">
                                     </span>
                                     <input type="hidden" class="payment-name" name="82" value="Linkaja">
-                                </label> <label class="image-radio" data-payment-id="85">
+                                </label>
+
+                                <label class="image-radio" data-payment-id="85">
                                     <input type="hidden" id="fee-85" value="5000">
-                                    <input type="radio" id="lsa-payment-85" name="payment-method" value="85">
+                                    <input type="radio" id="lsa-payment-85" name="payment-method" onclick="hideShowDiv(5)" value="85">
                                     <span class="uk-position-relative payment-container">
                                         <div class="payment-promo-badge coupon"></div>
                                         <span class="payment-checked-info"></span>
                                         <img src="/images/bank/indomaret-v2.png" class="uk-position-center indomaret">
                                     </span>
                                     <input type="hidden" class="payment-name" name="85" value="Indomaret">
-                                </label> <label class="image-radio uk-hidden" id="payment_shopee_app_span"
+                                </label>
+
+                                <label class="image-radio uk-hidden" id="payment_shopee_app_span"
                                     data-payment-id="87">
                                     <input type="hidden" id="fee-87" value="0">
-                                    <input type="radio" id="lsa-payment-87" name="payment-method" value="87">
+                                    <input type="radio" id="lsa-payment-87" name="payment-method" onclick="hideShowDiv(6)" value="87">
                                     <span class="uk-position-relative payment-container">
                                         <div class="payment-promo-badge coupon"></div>
                                         <span class="payment-checked-info"></span>
                                         <img src="/images/bank/logo-shopeepay.png" class="uk-position-center shopeepay">
                                     </span>
                                     <input type="hidden" class="payment-name" name="87" value="Shopeepay">
-                                </label> <label class="image-radio" data-payment-id="88">
+                                </label>
+
+                                <label class="image-radio" data-payment-id="88">
                                     <input type="hidden" id="fee-88" value="0">
-                                    <input type="radio" id="lsa-payment-88" name="payment-method" value="88">
+                                    <input type="radio" id="lsa-payment-88" name="payment-method" onclick="hideShowDiv(7)" value="88">
                                     <span class="uk-position-relative payment-container">
                                         <div class="payment-promo-badge coupon"></div>
                                         <span class="payment-checked-info"></span>
@@ -715,9 +731,11 @@
                                             class="uk-position-center shopeepay">
                                     </span>
                                     <input type="hidden" class="payment-name" name="88" value="Shopeepay">
-                                </label> <label class="image-radio" style="order:1;" data-payment-id="6">
+                                </label>
+
+                                <label class="image-radio" style="order:1;" data-payment-id="6">
                                     <input type="hidden" id="fee-6" value="5000">
-                                    <input type="radio" id="lsa-payment-6" name="payment-method" value="6">
+                                    <input type="radio" id="lsa-payment-6" name="payment-method" onclick="hideShowDiv(8)" value="6">
                                     <span class="uk-position-relative payment-container">
                                         <div class="payment-promo-badge coupon"></div>
                                         <span class="payment-checked-info"></span>
@@ -727,8 +745,9 @@
                                     <input type="hidden" class="payment-name" name="6" value="Credit Card">
                                 </label>
                             </form>
+
                             <div class="payment-method-info">
-                                <div class="how-to" id="how-to-67" style="display:none;">
+                                <div class="how-to" id="how-to-67" style="">
                                     <p class="payment-method-info-title uk-margin-small-top uk-margin-small-bottom">
                                         GoPay
                                     </p>
@@ -737,7 +756,7 @@
                                         Pembayaran uang elektronik melalui aplikasi Gojek
                                     </p>
                                 </div>
-                                <div class="how-to" id="how-to-34" style="display:none;">
+                                <div class="how-to" id="how-to-34" style="">
                                     <p class="payment-method-info-title uk-margin-small-top uk-margin-small-bottom">
                                         Virtual Account BCA
                                     </p>
@@ -748,7 +767,7 @@
                                         banking.
                                     </p>
                                 </div>
-                                <div class="how-to" id="how-to-18" style="display:none;">
+                                <div class="how-to" id="how-to-18" style="">
                                     <p class="payment-method-info-title uk-margin-small-top uk-margin-small-bottom">
                                         Bank Transfer (Virtual Account)
                                     </p>
@@ -760,7 +779,7 @@
                                         Alto.
                                     </p>
                                 </div>
-                                <div class="how-to" id="how-to-82" style="display:none;">
+                                <div class="how-to" id="how-to-82" style="">
                                     <p class="payment-method-info-title uk-margin-small-top uk-margin-small-bottom">
                                         LinkAja
                                     </p>
@@ -769,7 +788,7 @@
                                         Pembayaran uang elektronik melalui aplikasi LinkAja
                                     </p>
                                 </div>
-                                <div class="how-to" id="how-to-85" style="display:none;">
+                                <div class="how-to" id="how-to-85" style="">
                                     <p class="payment-method-info-title uk-margin-small-top uk-margin-small-bottom">
                                         Indomaret
                                     </p>
@@ -778,7 +797,7 @@
                                         Indomaret
                                     </p>
                                 </div>
-                                <div class="how-to" id="how-to-87" style="display:none;">
+                                <div class="how-to" id="how-to-87" style="">
                                     <p class="payment-method-info-title uk-margin-small-top uk-margin-small-bottom">
                                         ShopeePay
                                     </p>
@@ -787,7 +806,7 @@
                                         Pembayaran dilakukan dengan cara klik direct link ke Aplikasi Shopee.
                                     </p>
                                 </div>
-                                <div class="how-to" id="how-to-88" style="display:none;">
+                                <div class="how-to" id="how-to-88" style="">
                                     <p class="payment-method-info-title uk-margin-small-top uk-margin-small-bottom">
                                         ShopeePay QRIS
                                     </p>
@@ -796,7 +815,7 @@
                                         Pembayaran dilakukan dengan cara scan QRIS menggunakan Aplikasi Shopee.
                                     </p>
                                 </div>
-                                <div class="how-to" id="how-to-6" style="display:none;">
+                                <div class="how-to" id="how-to-6" style="">
                                     <p class="payment-method-info-title uk-margin-small-top uk-margin-small-bottom">
                                         Credit / Debt Card
                                     </p>
@@ -889,6 +908,7 @@
             </div>
         </div>
         {{-- ref:https://www.loket.com/order/yry/personal-information --}}
+        <script src="{{ asset('storage/js/paymentMethod.js') }}"></script>
     </body>
 
     </html>
