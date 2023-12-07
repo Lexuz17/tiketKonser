@@ -23,7 +23,7 @@
     <div class="auth-member my-3 mx-1">
         <div class="auth-member-brand text-center mb-5">
             <a href="/" class="">
-                <img src="{{ asset('storage/image/global/logo-loket-blue.svg') }}" alt="">
+                <img src="{{ asset('storage/image/global/logo-purple.png') }}" width="122px" alt="">
             </a>
         </div>
         <div class="container">
@@ -37,7 +37,7 @@
                             <div class="fw-bold mb-2">
                                 Tidak lagi ketinggalan event atau konser favoritmu
                             </div>
-                            <p>Gabung dan rasakan kemudahan bertransaksi dan mengelola event di Loket.</p>
+                            <p>Gabung dan rasakan kemudahan bertransaksi dan mengelola event di KonserKita.</p>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                 Masuk ke akunmu
                             </div>
                             <div class="label fs-6 text-gray-4">
-                                Tidak punya akun Loket?
+                                Tidak punya akun KonserKita?
                                 <a href="/register" class="text-decoration-none">
                                     <span class="text-dark fw-bold">
                                         Daftar

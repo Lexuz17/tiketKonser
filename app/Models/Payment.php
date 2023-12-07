@@ -11,6 +11,12 @@ class Payment extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'metode_pembayaran',
+        'nomor_kartu',
+        'nama_bank',
+    ];
+
     public function transaction()
     {
         return $this->belongsTo(Transaction::class);

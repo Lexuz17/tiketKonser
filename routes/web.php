@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\SendEmail;
 use App\Http\Controllers\TransactionController;
@@ -34,19 +35,17 @@ use Illuminate\Support\Facades\Route;
 // creata -> show form to create new listing.
 
 Route::get('/', [ConcertController::class, 'index'])->name('home');
+Route::get('/discover', [ConcertController::class, 'allIndex'])->name('jelajah');
 
 Route::get('/about', function () {
     return view('about');
 });
 
-Route ::get('/event/{name}', [ConcertController::class, 'show']);
-Route::get('/cart', function () {
-    return view('cart');
-});
+// ini buat detail companynya
+Route::get('/company/{id}', [CompanyController::class, 'index'])->name('company.index');
 
-Route::get('cart', [ConcertController::class, 'cart'])->name('cart');
-
-// Route::get('add-to-cart/{id}', [EventsController::class, 'addToCart'])->name('add_to_cart');
+// Ini buat Detail konsertnya
+Route::get('/event/{name}', [ConcertController::class, 'show']);
 
 // Hanya yang belum login
 Route::middleware('guest')->group(function(){
@@ -78,25 +77,27 @@ Route::middleware(['auth','verified', 'ensureProfile'])->group(function () {
     Route::put('/user-update', [UserController::class, 'update']);
 
     // transactions section
+
     // transferData
     Route::get('/get-event-data', [TransactionController::class, 'getEventData']);
+    Route::post('/get-event-data', [TransactionController::class, 'storeHalf'])->name('transactions.store');
+
+    // Menampilkan semua transacion.
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
-    // Menampilkan formmulir konfirmasi transaction
-    Route::post('/transaction/confirmation', [TransactionController::class, 'confrimTransaction'])->name('transactions.confirm');
-    // Menyimpan transaksi baru ke dalam database
-    Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
-    // Menampilkan detail transaksi
-    Route::get('/transactions/{id}/show', [TransactionController::class, 'show'])->middleware('verifyInvoice');
+
+    // Menampilkan formmulir konfirmasi transaction dan membuat transaction baru
+    Route::get('/transaction/{id}/confirmation', [TransactionController::class, 'getConfirmTransaction'])->name('transactions.confirm');
+    Route::post('/transaction/{id}/confirmation', [TransactionController::class, 'storeFull'])->name('transactions.storeFull');
+
+    // Ini buat tampilih invoice
+    Route::get('/transactions/{id}/show', [TransactionController::class, 'show'])->middleware('verifyInvoice'); // buat handle yang mau akses dari luar jadi ga ada csrf
     Route::post('/transactions/{id}/show', [TransactionController::class, 'show'])->name('transactions.show')->middleware('verifyInvoice');
+
     // Menampilkan formulir untuk mengonfirmasi pembayaran
     Route::get('/transactions/{id}/confirm-payment', [TransactionController::class, 'confirmPayment'])->name('transactions.confirm-payment');
     // Menyimpan konfirmasi pembayaran ke dalam database
     Route::post('/transactions/{id}/confirm-payment', [TransactionController::class, 'storePaymentConfirmation'])->name('transactions.store-payment-confirmation');
 
-    // Route::post('/transaction-show', [TransactionController::class, 'show'])->name("showTransaction");
-    Route::get('/transaction', function () {
-        return view('transaction.transaction');
-    });
     Route::get('/debug', [TransactionController::class, 'debug']);
 });
 

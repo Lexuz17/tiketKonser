@@ -2,14 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cart;
-use App\Models\Company;
-use App\Models\Concert;
-use App\Models\DetailTransaction;
-use App\Models\Payment;
-use App\Models\Ticket;
-use App\Models\Transaction;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,14 +14,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserCartSeeder::class,                   // untuk mengisi data pengguna dan keranjang belanja
+            UserSeeder::class,                   // untuk mengisi data pengguna dan keranjang belanja
             UserProfileSeeder::class,                // untuk mengisi data profil pengguna
             CategoryConcertSeeder::class,            // untuk mengisi data kategori konser
             TransactionSeeder::class,                // untuk membuat dan mengisi transaksi dan payment terkait
             CompanyConcertSeeder::class,             // untuk mengisi data perusahaan dan konser
             TicketSeeder::class,                     // untuk membuat tiket untuk konser dan mengaitkannya dengan transaksi
             CategoryConcertAttachmentSeeder::class,  // untuk mengisi data yang menghubungkan kategori dan konser
-            TicketCartAttachmentSeeder::class        // untuk mengisi data yang menghubungkan tiket dan keranjang belanja
         ]);
 
         // Raw logic

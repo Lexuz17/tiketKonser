@@ -16,12 +16,12 @@ class CompanyConcertSeeder extends Seeder
      */
     public function run()
     {
-        $companies = Company::factory(10)->create();
+        $companies = Company::factory(15)->create();
 
         $allConcerts = collect();
 
         foreach ($companies as $company) {
-            $concerts = Concert::factory()->count(2)->create(['company_id' => $company->id]);
+            $concerts = Concert::factory()->count(20)->create(['company_id' => $company->id]);
             $allConcerts = $allConcerts->merge($concerts);
         }
     }

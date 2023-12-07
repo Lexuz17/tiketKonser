@@ -45,7 +45,7 @@
         <footer class="bg-dark text-white pt-5 pb-5 main-footer">
             <div class="container d-flex flex-wrap justify-content-center">
                 <div class="mx-5 px-4">
-                    <p class="fw-bold">Tentang Loket</p>
+                    <p class="fw-bold">Tentang KonserKita</p>
                     <ul class="list-unstyled mb-0 fw-light">
                         <li>
                             <a href="#!" class="text-white text-decoration-none">Masuk</a>

@@ -8,7 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class UserCartSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -53,10 +53,5 @@ class UserCartSeeder extends Seeder
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
-        $user1->cart()->create();
-        $user2->cart()->create();
-        $user3->cart()->create();
-        $user4->cart()->create();
-        $user5->cart()->create();
     }
 }

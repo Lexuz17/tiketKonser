@@ -17,10 +17,10 @@ class TransactionSeeder extends Seeder
 
     public function run()
     {
-        $transactions = Transaction::factory()->count(10)->create();
+        $transactions = Transaction::factory()->count(50)->create();
 
         foreach ($transactions as $transaction) {
-            Payment::factory()->count(2)->create(['transaction_id' => $transaction->id]);
+            Payment::factory()->create(['transaction_id' => $transaction->id]);
         }
     }
 }

@@ -86,10 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                 <button type="submit" class="btn btn-outline-dark">Invoice</button>
                                                             </form>` : ''}
                                                         ${item.status_pembayaran === 'Pending' ?
-                                                            `<form action="transactions/${item.transaction_id}/show" method="GET">
-                                                                <div class="btn btn-primary">
-                                                                    Panduan Pembayaran
-                                                                </div>
+                                                            `<form action="transactions/${item.transaction_id}/confirm-payment" method="GET">
+                                                                <button type="submit" class="btn btn-primary">Panduan Pembayaran</button>
                                                             </form>` : ''}
                                                     </div>
                                                 </div>

@@ -22,15 +22,16 @@
         <div class="row row-cols-2 w-75">
             <div class="col-2">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('storage/image/global/logo-loket-white.png') }}" alt="" width="130">
+                    <img src="{{ asset('storage/image/global/logo.png') }}" alt="" width="130">
                 </a>
             </div>
             <div class="col-md-9">
+                {{-- Search bar --}}
                 <form action="" method="get">
                     <div class="input-group w-100">
                         <input type="text" class="form-control bg-white bg-opacity-10 border-0 text-white-50"
                             placeholder="Cari konser seru di sini" name="event">
-                        <button class="btn btn-primary" id="button-addon2">
+                        <button class="btn btn-primary" id="searchButton">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -49,7 +50,7 @@
         </div>
         <div class="d-flex justify-content-center ms-auto">
             <div class="my-1">
-                <a class="nav-link text-white fw-semibold px-3" href="#">
+                <a class="nav-link text-white fw-semibold px-3" href="{{ route('jelajah') }}">
                     <i class="fa-solid fa-compass mx-1"></i> Jelajah
                 </a>
             </div>
@@ -58,55 +59,6 @@
                     <i class="fa-solid fa-ticket-simple mx-1"></i> Ticket Saya
                 </a>
             </div>
-
-            {{-- Cart Alex Theo --}}
-            {{-- <div class="my-1">
-                <div class="dropdown">
-                    <a class="nav-link text-white fw-semibold px-3" href="#">
-                        <i class="fa-solid fa-shopping-cart mx-1" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="row total-header-section">
-                            @php $total = 0 @endphp
-                            @foreach ((array) session('cart') as $id => $details)
-                                @php $total += $details['price'] * $details['quantity'] @endphp
-                            @endforeach
-                            <div class="col-lg-12 col-sm-12 col-12 total-section text-right">
-                                <p>Total: <span class="text-info">$ {{ $total }}</span></p>
-                            </div>
-                        </div>
-                        @if (session('cart'))
-                            @foreach (session('cart') as $id => $details)
-                                <div class="row cart-detail">
-                                    <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                        <img src="{{ asset('img') }}/{{ $details['photo'] }}" />
-                                    </div>
-                                    <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                        <p>{{ $details['product_name'] }}</p>
-                                        <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endif
-                        <div class="row">
-                            <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- Button cart batal --}}
-            {{-- <div class="my-1">
-                <a class="nav-link text-white fw-semibold px-3 position-relative" href="#">
-                    <i class="fa-solid fa-shopping-cart"></i>
-                    <span
-                        class="badge badge-pill bg-primary fw-bold rounded-circle position-absolute top-0 start-75 translate-middle"
-                        style="font-size: 10px;">
-                        5
-                    </span>
-                </a>
-            </div> --}}
 
             <div class="my-0 position-relative z-3" id="authProfile">
                 <a class="ps-2" href="#">

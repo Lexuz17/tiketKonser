@@ -22,7 +22,7 @@
         <div class="row row-cols-2 w-75 ">
             <div class="col-2">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('storage/image/global/logo-loket-white.png') }}" alt="" width="130">
+                    <img src="{{ asset('storage/image/global/logo.png') }}" alt="" width="130">
                 </a>
             </div>
             <div class="col-md-9">

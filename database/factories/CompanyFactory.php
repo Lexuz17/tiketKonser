@@ -22,7 +22,7 @@ class CompanyFactory extends Factory
             'nama' => $faker->company(),
             'logo' => $faker->imageUrl(360, 360, 'Company', true),
             'since' => $faker->year(),
-            'desc' => implode("\n", $faker->paragraphs(20)),
+            'desc' => implode("\n", $faker->paragraphs(2)),
         ];
     }
 }

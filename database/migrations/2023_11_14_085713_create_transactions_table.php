@@ -18,16 +18,16 @@ return new class extends Migration
             // $table->timestamps();
             // Ambil user id foreign key
             $table->foreignId('user_id')->constrained('users');
-            $table->date('tanggal');
-            $table->time('waktu');
-            $table->integer('total_ticket');
-            $table->integer('total_harga_detail');
-            $table->string('nama_lengkap');
-            $table->string('no_telp', 20);
-            $table->string('email');
-            $table->string('nomor_ktp', 50);
-            $table->string('metode_pembayaran', 50);
-            $table->string('status_pembayaran', 50);
+            $table->date('tanggal')->nullable();
+            $table->time('waktu')->nullable();
+            $table->integer('total_ticket')->nullable();
+            $table->integer('total_harga_detail')->nullable();
+            $table->string('nama_lengkap')->nullable();
+            $table->string('no_telp', 20)->nullable();
+            $table->string('email')->nullable();
+            $table->string('nomor_ktp', 50)->nullable();
+            $table->string('metode_pembayaran', 50)->nullable();
+            $table->string('status_pembayaran', 50)->nullable();
         });
     }
 

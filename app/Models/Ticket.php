@@ -21,9 +21,4 @@ class Ticket extends Model
         return $this->belongsToMany(Transaction::class, 'detail_transactions', 'ticket_id', 'transaction_id')
             ->withPivot('jumlah_ticket', 'jumlah_harga_detail');
     }
-
-    public function carts()
-    {
-        return $this->belongsToMany(Cart::class, 'detail_carts');
-    }
 }

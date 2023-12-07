@@ -6,9 +6,9 @@
     <div class="card-event-description p-3 position-relative">
         <a href="/event/{{ rtrim(str_replace(' ', '-', $title), '.') }}" class="position-absolute w-100 h-100 top-0 start-0" target="blank"></a>
         <div class="description-title">{{ $title }}</div>
-        <div class="description-date text-gray-3 py-1">{{ date('d F Y', strtotime($date)) }}</div>
+        <div class="description-date text-gray-3 fs-label py-1">{{ date('d F Y', strtotime($date)) }}</div>
         <div class="description-price">
-            <span class="final-price fw-bold">{{ $price }}</span>
+            <span class="final-price fw-bold fs-7">{{ $price }}</span>
         </div>
     </div>
     <div class="card-event-creator px-3 py-2 position-relative">

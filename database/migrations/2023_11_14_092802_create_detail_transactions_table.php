@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detail_transactions', function (Blueprint $table) {
-            $table->foreignId('transaction_id')->constrained('transactions');
-            $table->foreignId('ticket_id')->constrained('tickets');
+            $table->foreignId('transaction_id')
+                ->constrained('transactions')
+                ->onDelete('cascade');
+            $table->foreignId('ticket_id')
+                ->constrained('tickets')
+                ->onDelete('cascade');
             $table->primary(['transaction_id', 'ticket_id']);
             // foreign key transid dan ticket id
             $table->integer('jumlah_ticket');

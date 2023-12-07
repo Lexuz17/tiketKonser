@@ -11,8 +11,11 @@ class Transaction extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'user_id',
         'tanggal',
         'waktu',
+        'total_ticket',
+        'total_harga_detail',
         'nama_lengkap',
         'no_telp',
         'email',

@@ -24,13 +24,13 @@
     <div id='dashboard-sidebar' class="dashboard-sidebar-container">
         <a href="/">
             <div class="dashboard-sidebar-logo bg-dark d-flex align-items-center justify-content-center">
-                <img src="{{ asset('storage/image/global/logo-loket-white.png') }}" alt="">
+                <img src="{{ asset('storage/image/global/logo-white.png') }}" width="120px" alt="">
             </div>
         </a>
         <div class="nav-list-menu">
             <ul class="nav-parent-item list-group pt-3 pb-2">
                 <li class="nav-item {{ Request::is('/') ? 'active' : '' }} list-group-item bg-transparent border-0" id="jelajahKonser">
-                    <a class="nav-link fw-semibold px-3" href="/">
+                    <a class="nav-link fw-semibold px-3" href="{{ route('jelajah') }}">
                         <i class="fa-solid fa-compass mx-1"></i> Jelajah Konser
                     </a>
                 </li>

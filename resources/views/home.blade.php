@@ -17,107 +17,162 @@
             </div>
         </div>
 
-        {{-- Banner Promosi --}}
-        <div id="bannerCarousel" class="carousel slide col-md-12" data-bs-ride="carousel" data-bs-interval="4000">
-            <div class="carousel-indicators mb-0">
-                @php $i = 0; @endphp
-                @foreach ($sortedUpcomingConcertsUnique as $concert)
-                    @if ($concert->banner)
-                        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="{{ $i }}"
-                            class="{{ $i === 0 ? 'active' : '' }} rounded-circle custom-z-index"
-                            aria-label="Slide {{ $i + 1 }}"></button>
-                        @php $i++; @endphp
-                    @endif
-                @endforeach
-            </div>
-
-            <div class="carousel-inner rounded-4">
-                @php $i = 0; @endphp
-                @foreach ($sortedUpcomingConcertsUnique as $concert)
-                    @if ($concert->banner)
-                        <div class="carousel-item{{ $i === 0 ? ' active' : '' }}">
-                            <img src="{{ asset('storage/image/home/Banner/' . $concert->banner) }}" class="d-block w-100"
-                                alt="{{ $concert->nama_konser }}">
+        @if(isset($eventSearch))
+            {{-- Event search show --}}
+            <div class="search-event-section">
+                <div class="search-event-header">
+                    <div class="new-search-page">
+                        <div class="d-flex align-items-center flex-wrap justify-content-between">
+                            <div class="first-column">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="middle-column ps-4 fs-4 fw-bold flex-grow-1">
+                                Event dengan kata "{{ $eventSearch }}"
+                            </div>
+                            <div class="right-column">
+                                <a class="show-all text-decoration-none " href="{{ route('jelajah') }}">Lihat Semua</a>
+                            </div>
                         </div>
-                        @php $i++; @endphp
-                    @endif
-                @endforeach
-            </div>
+                    </div>
+                </div>
+                <div class="section-event mt-4 search-event-slider">
+                    <div class="section-wrapper">
+                        <div class="section-content swiper mySwiper">
+                            <div class="slide-content">
+                                <div class="swiper-wrapper">
+                                    @foreach ($sortedUpcomingConcerts as $concert)
+                                        <x-event-card image="{{ asset('storage/image/home/Event/' . $concert->gambar) }}"
+                                            location="{{ $concert->tempat }}" title="{{ $concert->nama_konser }}"
+                                            date="{{ $concert->tanggal }}"
+                                            price="Rp {{ number_format($concert->cheapestTicketPrice, 0, ',', '.') }}"
+                                            creatorImage="{{ asset($concert->company->logo) }}"
+                                            creatorName="{{ $concert->company->nama }}" />
+                                    @endforeach
+                                    <div class="card-event any-event rounded-3 swiper-slide shadow d-flex justify-content-center align-items-center" style="display: block;">
+                                        <a class="text-decoration-none w-100" href="/discover?event={{ $eventSearch }}">
+                                            <div class="text-center text-black align-items-center fw-bold">
+                                                <i class="fa-solid fa-circle-info fs-4"></i>
+                                                <div>
+                                                    Lihat Event Lainnya
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
 
-            {{-- Button Prev & Next --}}
-            <button class="carousel-control-prev my-auto shadow rounded-circle" type="button"
-                data-bs-target="#bannerCarousel" data-bs-slide="prev">
-                <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
-            </button>
-            <button class="carousel-control-next my-auto shadow rounded-circle" type="button"
-                data-bs-target="#bannerCarousel" data-bs-slide="next">
-                <i class="fa-solid fa-angle-right fs-6 text-gray-4"></i>
-            </button>
-        </div>
-
-
-        {{-- Event Pilihan --}}
-        <div class="section-event col-md-12 pb-2">
-            <div class="section-wrapper">
-                <div class="section-title">
-                    <div class="fs-4 fw-bold lato text-dark">
-                        Event Pilihan
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next shadow my-auto" id="nextButton" aria-disabled="false">
+                            <i class="fa-solid fa-angle-right fs-6 text-gray-4"></i>
+                        </div>
+                        <div class="swiper-button-prev shadow my-auto" id="prevButton" aria-disabled="true">
+                            <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
+                        </div>
                     </div>
                 </div>
 
-                <div class="section-content swiper mySwiper">
-                    <div class="slide-content">
-                        <div class="swiper-wrapper">
-                            @foreach ($sortedUpcomingConcertsUnique as $concert)
-                                <x-event-card image="{{ asset('storage/image/home/Event/' . $concert->gambar) }}"
-                                    location="{{ $concert->tempat }}" title="{{ $concert->nama_konser }}"
-                                    date="{{ $concert->tanggal }}"
-                                    price="Rp {{ number_format($concert->cheapestTicketPrice, 0, ',', '.') }}"
-                                    creatorImage="{{ asset($concert->company->logo) }}"
-                                    creatorName="{{ $concert->company->nama }}" />
+            </div>
+        @else
+            {{-- Banner Promosi --}}
+            <div id="bannerCarousel" class="carousel slide col-md-12" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-indicators mb-0">
+                    @php $i = 0; @endphp
+                    @foreach ($randomConcertsBanner as $concert)
+                        @if ($concert->banner)
+                            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="{{ $i }}"
+                                class="{{ $i === 0 ? 'active' : '' }} rounded-circle custom-z-index"
+                                aria-label="Slide {{ $i + 1 }}"></button>
+                            @php $i++; @endphp
+                        @endif
+                    @endforeach
+                </div>
+
+                <div class="carousel-inner rounded-4">
+                    @php $i = 0; @endphp
+                    @foreach ($randomConcertsBanner as $concert)
+                        @if ($concert->banner)
+                            <div class="carousel-item{{ $i === 0 ? ' active' : '' }}">
+                                <img src="{{ asset('storage/image/home/Banner/' . $concert->banner) }}" class="d-block w-100"
+                                    alt="{{ $concert->nama_konser }}">
+                            </div>
+                            @php $i++; @endphp
+                        @endif
+                    @endforeach
+                </div>
+
+                {{-- Button Prev & Next --}}
+                <button class="carousel-control-prev my-auto shadow rounded-circle" type="button"
+                    data-bs-target="#bannerCarousel" data-bs-slide="prev">
+                    <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
+                </button>
+                <button class="carousel-control-next my-auto shadow rounded-circle" type="button"
+                    data-bs-target="#bannerCarousel" data-bs-slide="next">
+                    <i class="fa-solid fa-angle-right fs-6 text-gray-4"></i>
+                </button>
+            </div>
+
+            {{-- Event Pilihan --}}
+            <div class="section-event col-md-12 pb-2">
+                <div class="section-wrapper">
+                    <div class="section-title">
+                        <div class="fs-4 fw-bold lato text-dark">
+                            Event Pilihan
+                        </div>
+                    </div>
+
+                    <div class="section-content swiper mySwiper">
+                        <div class="slide-content">
+                            <div class="swiper-wrapper">
+                                @foreach ($sortedUpcomingConcertsUnique as $concert)
+                                    <x-event-card image="{{ asset('storage/image/home/Event/' . $concert->gambar) }}"
+                                        location="{{ $concert->tempat }}" title="{{ $concert->nama_konser }}"
+                                        date="{{ $concert->tanggal }}"
+                                        price="Rp {{ number_format($concert->cheapestTicketPrice, 0, ',', '.') }}"
+                                        creatorImage="{{ asset($concert->company->logo) }}"
+                                        creatorName="{{ $concert->company->nama }}" />
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next shadow my-auto" id="nextButton" aria-disabled="false">
+                        <i class="fa-solid fa-angle-right fs-6 text-gray-4"></i>
+                    </div>
+                    <div class="swiper-button-prev shadow my-auto" id="prevButton" aria-disabled="true">
+                        <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
+                    </div>
+                </div>
+            </div>
+
+            {{-- bgluar --}}
+            <div class="bg-luar bg-dark w-100 col-md-12 position-absolute start-0"></div>
+
+            {{-- Top selling --}}
+            <div class="section-top-selling col-md-12 py-4 bg-dark">
+                <div class="section-wrapper">
+                    <div class="section-title">
+                        <div class="fs-4 fw-bold lato text-white">
+                            Paling Laku Keras!
+                        </div>
+                    </div>
+                    <div class="section-content text-white d-grid mb-2">
+                        <div class="top-selling-list d-inline-block">
+                            @foreach ($favoriteConcerts as $concert)
+                                <div class="top-selling-item d-inline-flex me-4 align-items-center">
+                                    <div class="top-selling-number text-gray-4 oxygen lh-1 me-2">{{ $loop->iteration }}</div>
+                                    <div class="top-selling-thumbnail position-relative rounded-3 overflow-hidden">
+                                        <a href="/event/{{ rtrim(str_replace(' ', '-', $concert->nama_konser), '.') }}"
+                                            class="position-absolute w-100 h-100 top-0 start-0">
+                                        </a>
+                                        <img src="{{ asset('storage/image/home/Event/' . $concert->gambar) }}"
+                                            alt="{{ $concert->nama_konser }}" class="w-100 h-100">
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-next shadow my-auto" id="nextButton" aria-disabled="false">
-                    <i class="fa-solid fa-angle-right fs-6 text-gray-4"></i>
-                </div>
-                <div class="swiper-button-prev shadow my-auto" id="prevButton" aria-disabled="true">
-                    <i class="fa-solid fa-angle-left fs-6 text-gray-4"></i>
-                </div>
             </div>
-        </div>
-
-        {{-- bgluar --}}
-        <div class="bg-luar bg-dark w-100 col-md-12 position-absolute start-0">
-
-        </div>
-        {{-- Top selling --}}
-        <div class="section-top-selling col-md-12 py-4 bg-dark">
-            <div class="section-wrapper">
-                <div class="section-title">
-                    <div class="fs-4 fw-bold lato text-white">
-                        Paling Laku Keras!
-                    </div>
-                </div>
-                <div class="section-content text-white d-grid mb-2">
-                    <div class="top-selling-list d-inline-block">
-                        @foreach ($favoriteConcerts as $concert)
-                            <div class="top-selling-item d-inline-flex me-4 align-items-center">
-                                <div class="top-selling-number text-gray-4 oxygen lh-1 me-2">{{ $loop->iteration }}</div>
-                                <div class="top-selling-thumbnail position-relative rounded-3 overflow-hidden">
-                                    <a href="/event/{{ rtrim(str_replace(' ', '-', $concert->nama_konser), '.') }}"
-                                        class="position-absolute w-100 h-100 top-0 start-0">
-                                    </a>
-                                    <img src="{{ asset('storage/image/home/Event/' . $concert->gambar) }}"
-                                        alt="{{ $concert->nama_konser }}" class="w-100 h-100">
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endif
 
         {{-- Campaing / promosi banner --}}
         <div class="section-campaign col-md-12 py-2 position-relative">
@@ -136,13 +191,13 @@
                 <div class="section-content swiper">
                     <div class="company-section-list">
                         <div class="swiper-wrapper">
-                            @foreach ($companiesShow as $nama => $logo)
+                            @foreach ($companiesShow as $company)
                                 <div class="company-item me-4 swiper-slide">
-                                    <a href="#" class="position-absolute w-100 h-100 top-0 start-0 z-1"></a>
+                                    <a href="{{ route('company.index', ['id' => $company->id]) }}" class="position-absolute w-100 h-100 top-0 start-0 z-1"></a>
                                     <div class="company-avatar">
-                                        <img src="{{ $logo }}" alt="">
+                                        <img src="{{ $company->logo }}" alt="">
                                     </div>
-                                    <div class="company-name">{{ $nama }}</div>
+                                    <div class="company-name">{{ $company->nama }}</div>
                                 </div>
                             @endforeach
                         </div>
@@ -256,14 +311,13 @@
 
         {{-- Jelajah ke lebih banyak konser --}}
         <div class="section-additional col-md-12 mx-auto text-center pt-2">
-            <a href="#">
+            <a href="{{ route('jelajah') }}">
                 <button type="button" class="btn btn-outline-primary">
                     Jelajah ke lebih banyak konser
                     <i class="fa-solid fa-angle-right"></i>
                 </button>
             </a>
         </div>
-
     </div>
 
     {{-- swiper js --}}

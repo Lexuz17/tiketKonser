@@ -26,6 +26,16 @@
     opacity: 1;
 }
 
+/* Search Event Section */
+.right-column .show-all{
+    line-height: 30px;
+    padding: 8px 10px;
+    background-color: #9377e131;
+    border-radius: 30px;
+}
+
+/* NOt Search event Section */
+
 .carousel-indicators .rounded-circle {
     width: 8px;
     height: 8px;
@@ -60,6 +70,10 @@
 .card-event {
     width: 306px !important;
     margin: 0px 20px 5px 0px;
+}
+
+.card-event.any-event{
+    height: 324.81px;
 }
 
 .swiper {
@@ -132,7 +146,7 @@
 
 .bg-luar{
     height: 265px;
-    top: 894px;
+    top: 906px;
 }
 
 /* Section creator favorit */

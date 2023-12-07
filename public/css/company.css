@@ -1,0 +1,65 @@
+.hero-banner {
+    margin-top: -24px;
+    height: 200px; /* Set the desired height for your banner */
+    background-image: url("../storage/image/home/Company/banner.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.organizer-wrapper .left-side .left-side-inner {
+    margin-top: -72px;
+}
+
+.organizer-wrapper .left-side .left-side-inner .about-organizer .logo-avatar{
+    height: 100px;
+    width: 100px;
+    background-color: white;
+}
+
+.second-left-column .left-side{
+    width: 230px;
+    height: 100%;
+    border-left: 1px solid rgba(28,29,29,.25);
+    border-right: 1px solid rgba(28,29,29,.25);
+}
+
+.event-list-container .first-selector .event-list{
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+}
+
+.event-list-container .first-selector{
+    margin-bottom: 5px;
+}
+
+.event-list-container .first-selector .event-list .events-tabs{
+    color: #b1b6c0;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.event-list-container .first-selector .event-list .events-tabs.selected{
+    color: #585a5f;
+    border-bottom: 3px solid #fb7221;
+}
+
+.organizer-wrapper .event-list-container ul{
+    padding-bottom: 5px !important;
+    border-bottom: 1px solid #dbdfe7;
+}
+
+.second-right-column .event-not-found{
+    text-align: center;
+    min-height: 250px;
+}
+
+.event-not-found .content img{
+    height: 120px;
+}
+
+.event-item-content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+}
