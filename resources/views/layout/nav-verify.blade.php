@@ -75,7 +75,7 @@
                 <div class="navbar-auth-dropdown bg-white px-1 py-3 position-absolute end-0 mt-2 rounded-3 oxygen">
                     <div class="navbar-auth-dropdown-menu">
                         <div class="auth-menu-list list-unstyled">
-                            <a href="#" class="text-decoration-none text-gray-4">
+                            <a href="{{ route('jelajah') }}" class="text-decoration-none text-gray-4">
                                 <li class="py-2 px-2 mx-2 auth-menu-item rounded-2">
                                     Jelajah
                                 </li>

@@ -77,7 +77,6 @@ Route::middleware(['auth','verified', 'ensureProfile'])->group(function () {
     Route::put('/user-update', [UserController::class, 'update']);
 
     // transactions section
-
     // transferData
     Route::get('/get-event-data', [TransactionController::class, 'getEventData']);
     Route::post('/get-event-data', [TransactionController::class, 'storeHalf'])->name('transactions.store');
