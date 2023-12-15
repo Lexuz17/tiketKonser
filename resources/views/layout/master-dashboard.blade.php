@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('storage/image/global/logo-icon.png') }}" type="x-icon">
     {{-- Custom Local Boostrap --}}
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     {{-- Jquery --}}
@@ -60,7 +61,7 @@
                 </div>
                 <div class="navbar-auth ms-auto ">
                     <div class="name-section rounded-4 d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('storage/image/Avatars/'.$userProfile->gambar) }}" alt="">
+                        <img class="object-fit-cover" src="{{ asset('storage/image/Avatars/'.$userProfile->gambar) }}" alt="">
                         <div class="name oxygen">{{ $userProfile->nama_depan .' '. $userProfile->nama_belakang }}</div>
                     </div>
                 </div>

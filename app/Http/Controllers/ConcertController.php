@@ -137,6 +137,7 @@ class ConcertController extends Controller
 
     public function show($name)
     {
+        $requestName = $name;
         $name = str_replace('-', ' ', $name) . '.';
 
         $selectedConcert = Concert::with(['company', 'tickets' => function ($query) {
@@ -157,10 +158,10 @@ class ConcertController extends Controller
             if ($user->email_verified_at !== null) {
                 $userProfile = UserProfile::where('user_id', $user->id)->first();
 
-                return view('detail_konser', compact('userProfile', 'selectedConcert', 'selectedCompanyData'));
+                return view('detail_konser', compact('userProfile', 'selectedConcert', 'selectedCompanyData', 'requestName'));
             }
         }
 
-        return view('detail_konser', compact('selectedConcert', 'selectedCompanyData'));
+        return view('detail_konser', compact('selectedConcert', 'selectedCompanyData', 'requestName'));
     }
 }

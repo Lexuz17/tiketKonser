@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
+    <link rel="shortcut icon" href="{{ asset('storage/image/global/logo-icon.png') }}" type="x-icon">
     {{-- Custom Local Boostrap --}}
     <link rel="stylesheet" href="   {{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/master.css') }}">

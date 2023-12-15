@@ -48,9 +48,8 @@ class AuthController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        Auth::login($user, true);
 
-        $user->update(['remember_token' => Str::random(10)]);
         // Send registration confirmation email
         // Mail::to($user->email)->send(new TestSendingEmail($user));
 

@@ -79,7 +79,9 @@ Route::middleware(['auth','verified', 'ensureProfile'])->group(function () {
     // transactions section
     // transferData
     Route::get('/get-event-data', [TransactionController::class, 'getEventData']);
-    Route::post('/get-event-data', [TransactionController::class, 'storeHalf'])->name('transactions.store');
+
+    // Membuat transaction baru
+    Route::post('/event/{name}', [TransactionController::class, 'storeHalf'])->name('transactions.store');
 
     // Menampilkan semua transacion.
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');

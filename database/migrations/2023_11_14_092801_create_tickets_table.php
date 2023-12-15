@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            // concert id foreign key
             $table->foreignId('concert_id')->constrained('concerts');
             $table->string('kategori', 50);
             $table->integer('harga');

@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            // $table->timestamps();
-            // Ambil user id foreign key
             $table->foreignId('user_id')->constrained('users');
             $table->date('tanggal')->nullable();
             $table->time('waktu')->nullable();

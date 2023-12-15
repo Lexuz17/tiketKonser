@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add new user</title>
     {{-- Custom Local Boostrap --}}
+    <link rel="shortcut icon" href="{{ asset('storage/image/global/logo-icon.png') }}" type="x-icon">
     <link rel="stylesheet" href="   {{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/master.css') }}">
     {{-- Boostrap js --}}
@@ -130,16 +131,16 @@
                                         <div class="gender-list d-flex justify-content-between">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="gender"
-                                                    id="maleRadio" value="male"
-                                                    {{ old('gender') === 'male' ? 'checked' : '' }}>
+                                                    id="maleRadio" value="laki-laki"
+                                                    {{ old('gender') === 'laki-laki' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="maleRadio">
                                                     Laki-laki
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="gender"
-                                                    id="femaleRadio" value="female"
-                                                    {{ old('gender') === 'female' ? 'checked' : '' }}>
+                                                    id="femaleRadio" value="perempuan"
+                                                    {{ old('gender') === 'perempuan' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="femaleRadio">
                                                     Perempuan
                                                 </label>
